@@ -13,7 +13,6 @@ import ScaleIcon from "@mui/icons-material/ScaleOutlined";
 import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-import FormLabel from "@mui/material/FormLabel";
 
 const PublicationCounter = () => {
   const [unitOfMeasureWeight, setUnitOfMeasureWeight] = useState(0);
@@ -48,8 +47,8 @@ const PublicationCounter = () => {
     }
 
     const calculatedCount =
-      totalWeightOfBatch / (unitOfMeasureWeight * selectedUnitOfMeasureCount);
-    setPublicationCount(calculatedCount);
+      (totalWeightOfBatch / unitOfMeasureWeight) * selectedUnitOfMeasureCount;
+    setPublicationCount(Math.round(calculatedCount));
   };
 
   return (
@@ -144,9 +143,9 @@ const PublicationCounter = () => {
         <Button variant="contained" onClick={calculatePublicationCount}>
           Calculate Count
         </Button>
-        {publicationCount > 0 && (
-          <p>Publication Count: {publicationCount.toFixed(2)}</p>
-        )}
+        <Typography variant="h6" gutterBottom>
+        {publicationCount > 0 && <a>Publication Count: {publicationCount}</a>}
+        </Typography>
       </Stack>
     </Box>
   );
