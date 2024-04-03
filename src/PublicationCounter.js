@@ -7,47 +7,96 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
+import ScaleIcon from "@mui/icons-material/ScaleOutlined";
+import Box from "@mui/material/Box";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormLabel from "@mui/material/FormLabel";
 
 const PublicationCounter = () => {
   const [unitOfMeasureWeight, setUnitOfMeasureWeight] = useState(0);
   const [totalWeightOfBatch, setTotalWeightOfBatch] = useState(0);
-  const [countInUnitOfMeasure, setCountInUnitOfMeasure] = useState(0);
+  const [selectedUnitOfMeasureCount, setSelectedCount] = useState(1);
   const [publicationCount, setPublicationCount] = useState(0);
 
   const handleInputChange = (e) => {
-    const { value } = e.target;
+    let { value } = e.target;
+    value = value.replace(/\D/g, "");
     setTotalWeightOfBatch(value);
   };
 
   const handleUnitOfMeasureWeightChange = (e) => {
-    const { value } = e.target;
+    let { value } = e.target;
+    value = value.replace(/\D/g, "");
     setUnitOfMeasureWeight(value);
   };
 
+  const handleCountChange = (e) => {
+    setSelectedCount(parseInt(e.target.value));
+  };
+
   const calculatePublicationCount = () => {
-    // Ensure all inputs are valid numbers
-    if (!unitOfMeasureWeight || !totalWeightOfBatch || !countInUnitOfMeasure) {
+    if (
+      !unitOfMeasureWeight ||
+      !totalWeightOfBatch ||
+      !selectedUnitOfMeasureCount
+    ) {
       alert("Please enter valid values for all fields.");
       return;
     }
 
-    // Calculate the publication count
     const calculatedCount =
-      totalWeightOfBatch / (unitOfMeasureWeight * countInUnitOfMeasure);
+      totalWeightOfBatch / (unitOfMeasureWeight * selectedUnitOfMeasureCount);
     setPublicationCount(calculatedCount);
   };
 
   return (
-    <div>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="60vh"
+      p={4}
+    >
       <Stack
         direction="column"
         divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
+        spacing={3}
         justifyContent="center"
         alignItems="center"
       >
-        <h1>Publication Counter</h1>
+        <Stack
+          direction="column"
+          spacing={2}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Typography variant="overline text" component="h1">
+            Publication Counter Calculator
+          </Typography>
+          <ScaleIcon></ScaleIcon>
+        </Stack>
+        <Stack direction="column" spacing={3}>
+          <Typography variant="overline" display="block" gutterBottom>
+            How many in the Unit of Measure?
+          </Typography>
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+              value={selectedUnitOfMeasureCount.toString()}
+              onChange={handleCountChange}
+            >
+              <FormControlLabel value="1" control={<Radio />} label="1" />
+              <FormControlLabel value="2" control={<Radio />} label="2" />
+              <FormControlLabel value="5" control={<Radio />} label="5" />
+              <FormControlLabel value="10" control={<Radio />} label="10" />
+            </RadioGroup>
+          </FormControl>
+        </Stack>
         <Stack direction="row" spacing={2}>
           <Typography variant="overline" display="block" gutterBottom>
             Enter Unit of Measure
@@ -92,34 +141,14 @@ const PublicationCounter = () => {
             </FormHelperText>
           </FormControl>
         </Stack>
-        <Stack direction="row" spacing={2}>
-          <Typography variant="overline" display="block" gutterBottom>
-            Enter Count in Unit of Measure
-          </Typography>
-          <FormControl sx={{ m: 0, width: "13ch" }} variant="outlined">
-            <OutlinedInput
-              id="outlined-adornment-weight"
-              type="number"
-              size="small"
-              value={countInUnitOfMeasure}
-              onChange={(e) => setCountInUnitOfMeasure(e.target.value)}
-              endAdornment={<InputAdornment position="end">g</InputAdornment>}
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                "aria-label": "count",
-              }}
-            />
-            <FormHelperText id="outlined-weight-helper-text">
-              Weight
-            </FormHelperText>
-          </FormControl>
-        </Stack>
         <Button variant="contained" onClick={calculatePublicationCount}>
-          Calculate Publication Count
+          Calculate Count
         </Button>
-        {publicationCount > 0 && <p>Publication Count: {publicationCount.toFixed(2)}</p>}
+        {publicationCount > 0 && (
+          <p>Publication Count: {publicationCount.toFixed(2)}</p>
+        )}
       </Stack>
-    </div>
+    </Box>
   );
 };
 
