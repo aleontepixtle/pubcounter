@@ -143,8 +143,8 @@ const PublicationCounter = () => {
         <Button variant="contained" onClick={calculatePublicationCount}>
           Calculate Count
         </Button>
-        <Typography variant="h6" gutterBottom>
-        {publicationCount > 0 && <a>Publication Count: {publicationCount}</a>}
+        <Typography variant="h6" gutterBottom id="publication-count">
+        <a href="#publication-count">Publication Count: {publicationCount}</a>
         </Typography>
       </Stack>
     </Box>
