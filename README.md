@@ -41,8 +41,11 @@
     This app aids in counting batches of publications (Literature) and calculates the count in your batch based on 3 factors:
     <br />
     - Weight of a single unit (publication) or weight of a known batch of units (ex. 5 publications)
+    <br />
     - Weight of the entire batch of publications
+    <br />
     - The known count in the batch of units
+    <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
