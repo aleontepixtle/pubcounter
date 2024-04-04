@@ -37,6 +37,7 @@
 <h3 align="center">PubCounter</h3>
 
   <p align="center">
+    THIS PROJECT IS STILL UNDER ACTIVE DEVELOPMENT, README WILL BE UPDATED ACCORDINGLY.
     This app aids in counting batches of publications (Literature) and calculates the count in your batch based on 3 factors:
      <ul>
        <li>Weight of a single unit (publication) or weight of a known batch of units (ex. 5 publications)</li>
