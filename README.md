@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/aleontepixtle/pubcounter">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -47,10 +47,10 @@
     <br />
     - The known count in the batch of units
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/aleontepixtle/pubcounter"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href"https://aleontepixtle.github.io/pubcounter/">View Demo</a>
     ·
     <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
