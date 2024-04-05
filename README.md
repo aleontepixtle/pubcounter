@@ -50,7 +50,7 @@
     <a href="https://github.com/aleontepixtle/pubcounter"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href"https://aleontepixtle.github.io/pubcounter/">View Demo</a>
+    <a href="https://aleontepixtle.github.io/pubcounter/">View Demo</a>
     ·
     <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
