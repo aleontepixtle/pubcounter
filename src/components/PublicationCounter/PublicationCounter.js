@@ -18,17 +18,19 @@ const PublicationCounter = () => {
   const [unitOfMeasureWeight, setUnitOfMeasureWeight] = useState(0);
   const [totalWeightOfBatch, setTotalWeightOfBatch] = useState(0);
   const [selectedUnitOfMeasureCount, setSelectedCount] = useState(1);
-  const [publicationCount, setPublicationCount] = useState(0);
+  const [publicationCount, setPublicationCount] = useState(null);
 
   const handleInputChange = (e) => {
     let { value } = e.target;
-    value = value.replace(/\D/g, "");
+    value = value.replace(/\D|^0+/g, "");
+    value = value === "" ? "" : parseInt(value);
     setTotalWeightOfBatch(value);
   };
-
+  
   const handleUnitOfMeasureWeightChange = (e) => {
     let { value } = e.target;
-    value = value.replace(/\D/g, "");
+    value = value.replace(/\D|^0+/g, "");
+    value = value === "" ? "" : parseInt(value);
     setUnitOfMeasureWeight(value);
   };
 
@@ -111,6 +113,7 @@ const PublicationCounter = () => {
               aria-describedby="outlined-weight-helper-text"
               inputProps={{
                 "aria-label": "weight",
+                onFocus: () => setUnitOfMeasureWeight(''),
               }}
             />
             <FormHelperText id="outlined-weight-helper-text">
@@ -133,6 +136,7 @@ const PublicationCounter = () => {
               aria-describedby="outlined-weight-helper-text"
               inputProps={{
                 "aria-label": "weight",
+                onFocus: () => setTotalWeightOfBatch(''),
               }}
             />
             <FormHelperText id="outlined-weight-helper-text">
@@ -143,9 +147,11 @@ const PublicationCounter = () => {
         <Button variant="contained" onClick={calculatePublicationCount}>
           Calculate Count
         </Button>
-        <Typography variant="h6" gutterBottom id="publication-count">
-        <a href="#publication-count">Publication Count: {publicationCount}</a>
-        </Typography>
+        {publicationCount !== null && publicationCount !== '' && (
+          <Typography variant="h5" gutterBottom id="publication-count">
+            <a class="links" href="#publication-count">Publication Count: {publicationCount}</a>
+          </Typography>
+        )}
       </Stack>
     </Box>
   );
