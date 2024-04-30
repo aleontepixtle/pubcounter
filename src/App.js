@@ -1,5 +1,5 @@
 import "./App.css";
-import PublicationCounter from "./PublicationCounter";
+import PublicationCounter from "./components/PublicationCounter/PublicationCounter";
 import packageJson from '../package.json';
 
 const version = packageJson.version;
