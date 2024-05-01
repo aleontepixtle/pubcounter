@@ -13,12 +13,14 @@ import ScaleIcon from "@mui/icons-material/ScaleOutlined";
 import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import PublicationCountPopover from "../PublicationCountPopover/PublicationCountPopover";
 
 const PublicationCounter = () => {
   const [unitOfMeasureWeight, setUnitOfMeasureWeight] = useState(0);
   const [totalWeightOfBatch, setTotalWeightOfBatch] = useState(0);
   const [selectedUnitOfMeasureCount, setSelectedCount] = useState(1);
   const [publicationCount, setPublicationCount] = useState(null);
+  const [popoverOpen, setPopoverOpen] = useState(false);
 
   const handleInputChange = (e) => {
     let { value } = e.target;
@@ -26,7 +28,7 @@ const PublicationCounter = () => {
     value = value === "" ? "" : parseInt(value);
     setTotalWeightOfBatch(value);
   };
-  
+
   const handleUnitOfMeasureWeightChange = (e) => {
     let { value } = e.target;
     value = value.replace(/\D|^0+/g, "");
@@ -51,6 +53,11 @@ const PublicationCounter = () => {
     const calculatedCount =
       (totalWeightOfBatch / unitOfMeasureWeight) * selectedUnitOfMeasureCount;
     setPublicationCount(Math.round(calculatedCount));
+    togglePopover();
+  };
+
+  const togglePopover = () => {
+    setPopoverOpen(!popoverOpen);
   };
 
   return (
@@ -113,7 +120,7 @@ const PublicationCounter = () => {
               aria-describedby="outlined-weight-helper-text"
               inputProps={{
                 "aria-label": "weight",
-                onFocus: () => setUnitOfMeasureWeight(''),
+                onFocus: () => setUnitOfMeasureWeight(""),
               }}
             />
             <FormHelperText id="outlined-weight-helper-text">
@@ -136,7 +143,7 @@ const PublicationCounter = () => {
               aria-describedby="outlined-weight-helper-text"
               inputProps={{
                 "aria-label": "weight",
-                onFocus: () => setTotalWeightOfBatch(''),
+                onFocus: () => setTotalWeightOfBatch(""),
               }}
             />
             <FormHelperText id="outlined-weight-helper-text">
@@ -147,10 +154,12 @@ const PublicationCounter = () => {
         <Button variant="contained" onClick={calculatePublicationCount}>
           Calculate Count
         </Button>
-        {publicationCount !== null && publicationCount !== '' && (
-          <Typography variant="h5" gutterBottom id="publication-count">
-            <a class="links" href="#publication-count">Publication Count: {publicationCount}</a>
-          </Typography>
+        {publicationCount !== null && publicationCount !== "" && (
+          <PublicationCountPopover
+            open={popoverOpen}
+            onClose={togglePopover}
+            publicationCount={publicationCount}
+          />
         )}
       </Stack>
     </Box>
