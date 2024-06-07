@@ -14,6 +14,7 @@ import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import PublicationCountPopover from "../PublicationCountPopover/PublicationCountPopover";
+import PublicationSearch from "../PublicationSearch/PublicationSearch";
 
 const PublicationCounter = () => {
   const [unitOfMeasureWeight, setUnitOfMeasureWeight] = useState(0);
@@ -86,6 +87,9 @@ const PublicationCounter = () => {
           </Typography>
           <ScaleIcon></ScaleIcon>
         </Stack>
+
+          <PublicationSearch></PublicationSearch>
+
         <Stack direction="column" spacing={3}>
           <Typography variant="overline" display="block" gutterBottom>
             How many in the Unit of Measure?
