@@ -32,7 +32,7 @@ const PublicationSearch = () => {
         <TextField
           {...params}
           label="Search For Publication"
-          sx={{ m: 0, width: '42ch' }}
+          sx={{ m: 0, width: '35ch' }}
           InputProps={{
             ...params.InputProps,
             startAdornment: (
