@@ -78,7 +78,7 @@ const PublicationCounter = () => {
       >
         <Stack
           direction="column"
-          spacing={2}
+          spacing={3}
           justifyContent="center"
           alignItems="center"
         >
@@ -86,9 +86,8 @@ const PublicationCounter = () => {
             Publication Counter Calculator
           </Typography>
           <ScaleIcon></ScaleIcon>
-        </Stack>
-
           <PublicationSearch></PublicationSearch>
+        </Stack>
 
         <Stack direction="column" spacing={3}>
           <Typography variant="overline" display="block" gutterBottom>
