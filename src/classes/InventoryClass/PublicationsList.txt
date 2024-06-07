@@ -1,129 +1,157 @@
+Language: English
 Category: Bibles
-Sub-Category: Relevant
-Edition: Regular
-(nwt) New World Translation
+Name: (nwt) New World Translation
+Edition: Standard
+Name: (nwtpkt) New World Translation (pocket-size)
 Edition: Pocket-Sized
-(nwtpkt) New World Translation (pocket-size)
-Sub-Category: Discontinued
-Edition: Regular
+Name: (nwsty) New World Translation (Gospels)
+Edition: Study Bible
 
+Language: English
 Category: Books
-Sub-Category: Relevant
-Edition: Regular
-(be) Ministry School
-(bhs) Teach Us
-(bt) Bearing Witness
-(cf) "My Follower"
-(cl) Close to Jehovah
-(fy) Family Happiness
-(ia) Imitate
-(jr) Jeremiah
-(jy) Jesus—The Way
-(kr) God's Kingdom Rules!
-(lfb) Learn From the Bible
-(lff) Enjoy Life Forever! (Book)
-(lr) Teacher
-(lvs) Remain in God's Love
-(od) Organized
-(rr) Pure Worship
-(sjj) "Sing Out Joyfully"
-(sjjls) "Sing Out Joyfully" (large size)
-(sjjyls) "Sing Out Joyfully"—Lyrics Only
-(yp1) Young People Ask, Volume 1
-(yp2) Young People Ask, Volume 2
-Sub-Category: Discontinued
-Edition: Regular
+Name: (be) Ministry School
+Edition: Standard
+Name: (bhs) Teach Us
+Edition: Standard
+Name: (bt) Bearing Witness
+Edition: Standard
+Name: (cf) "My Follower"
+Edition: Standard
+Name: (cl) Close to Jehovah
+Edition: Standard
+Name: (fy) Family Happiness
+Edition: Standard
+Name: (ia) Imitate
+Edition: Standard
+Name: (jr) Jeremiah
+Edition: Standard
+Name: (jy) Jesus—The Way
+Edition: Standard
+Name: (kr) God's Kingdom Rules!
+Edition: Standard
+Name: (lfb) Learn From the Bible
+Edition: Standard
+Name: (lff) Enjoy Life Forever! (Book)
+Edition: Standard
+Name: (lr) Teacher
+Edition: Standard
+Name: (lvs) Remain in God's Love
+Edition: Standard
+Name: (od) Organized
+Edition: Standard
+Name: (rr) Pure Worship
+Edition: Standard
+Name: (sjj) "Sing Out Joyfully"
+Edition: Standard
+Name: (sjjls) "Sing Out Joyfully" (large size)
+Edition: Large-Print
+Name: (sjjyls) "Sing Out Joyfully"—Lyrics Only
+Edition: Standard
+Name: (yp1) Young People Ask, Volume 1
+Edition: Standard
+Name: (yp2) Young People Ask, Volume 2
+Edition: Standard
 
+Language: English
 Category: Brochures
-Sub-Category: Relevant
-Edition: Regular
-(ay) Reading and Writing
-(bm) Bible's Message
-(ed) Education
-(fg) Good News
-(gf) God's Friend
-(hf) Happy Family
-(hl) Happy Life
-(jl) Jehovah's Will
-(la) Satisfying Life
-(lc) Was Life Created?
-(ld) Listen to God
-(lf) Origin of Life
-(lffi) Enjoy Life Forever! (Brochure)
-(ll) Listen and Live
-(mb) My Bible Lessons
-(ol) Road to Life
-(pc) Lasting Peace
-(ph) Pathway
-(rj) Return to Jehovah
-(rk) Real Faith
-(sp) Spirits of the Dead
-(th) Teaching
-(wfg) Wisdom From the Gospels
-(wj) Why Worship God
-(yc) Teach Your Children
-(ypq) 10 Questions
-Sub-Category: Discontinued
-Edition: Regular
+Name: (ay) Reading and Writing
+Edition: Standard
+Name: (bm) Bible's Message
+Edition: Standard
+Name: (ed) Education
+Edition: Standard
+Name: (fg) Good News
+Edition: Standard
+Name: (hf) Happy Family
+Edition: Standard
+Name: (hl) Happy Life
+Edition: Standard
+Name: (jl) Jehovah's Will
+Edition: Standard
+Name: (la) Satisfying Life
+Edition: Standard
+Name: (lc) Was Life Created?
+Edition: Standard
+Name: (ld) Listen to God
+Edition: Standard
+Name: (lf) Origin of Life
+Edition: Standard
+Name: (lffi) Enjoy Life Forever! (Brochure)
+Edition: Standard
+Name: (ll) Listen and Live
+Edition: Standard
+Name: (mb) My Bible Lessons
+Edition: Standard
+Name: (ol) Road to Life
+Edition: Standard
+Name: (pc) Lasting Peace
+Edition: Standard
+Name: (ph) Pathway
+Edition: Standard
+Name: (rj) Return to Jehovah
+Edition: Standard
+Name: (rk) Real Faith
+Edition: Standard
+Name: (sp) Spirits of the Dead
+Edition: Standard
+Name: (th) Teaching
+Edition: Standard
+Name: (wfg) Wisdom From the Gospels
+Edition: Standard
+Name: (wj) Why Worship God
+Edition: Standard
+Name: (yc) Teach Your Children
+Edition: Standard
+Name: (ypq) 10 Questions
+Edition: Standard
 
+Language: English
 Category: Forms & Supplies
-Edition: Regular
-Sub-Category: Relevant
-(jwcd1) Contact card for jw.org
-(jwcd4) Contact card for jw.org
-(jwcd9) Contact card for free Bible course
-(jwcd10) Contact card for free Bible course
-(S-4) Field Service Report
-(S-8) House-to-House Record
-(S-24) Transaction Record
-Sub-Category: Discontinued
-Edition: Regular
+Name: (jwcd1) Contact card for jw.org
+Name: (jwcd4) Contact card for jw.org
+Name: (jwcd9) Contact card for free Bible course
+Name: (jwcd10) Contact card for free Bible course
+Name: (S-4) Field Service Report
+Name: (S-8) House-to-House Record
+Name: (S-24) Transaction Record
 
+Language: English
 Category: Tracts
-Sub-Category: Relevant
-Edition: Regular
-(inv) Invitation to Congregation Meetings
-(T-30) View the Bible
-(T-31) View the Future
-(T-32) Happy Family Life
-(T-33) Who Controls the World?
-(T-34) Will Suffering End?
-(T-35) Live Again
-(T-36) Kingdom
-(T-37) Website tract
-Sub-Category: Discontinued
-Edition: Regular
+Name: (inv) Invitation to Congregation Meetings
+Name: (T-30) View the Bible
+Name: (T-31) View the Future
+Name: (T-32) Happy Family Life
+Name: (T-33) Who Controls the World?
+Name: (T-34) Will Suffering End?
+Name: (T-35) Live Again
+Name: (T-36) Kingdom
+Name: (T-37) Website tract
 
+Language: English
 Category: Public Magazines
-Sub-Category: Relevant
-Edition: Awake!
-(g18.1) Awake!
-(g18.2) Awake!
-(g18.3) Awake!
-(g19.1) Awake!
-(g19.2) Awake!
-(g19.3) Awake!
-(g20.1) Awake!
-(g20.2) Awake!
-(g20.3) Awake!
-(g21.1) Awake!
-(g21.2) Awake!
-(g21.3) Awake!
-(g22.1) Awake!
-Edition: Watchtower
-(wp18.1) Watchtower (Public)
-(wp18.2) Watchtower (Public)
-(wp18.3) Watchtower (Public)
-(wp19.1) Watchtower (Public)
-(wp19.2) Watchtower (Public)
-(wp19.3) Watchtower (Public)
-(wp20.1) Watchtower (Public)
-(wp20.2) Watchtower (Public)
-(wp20.3) Watchtower (Public)
-(wp21.1) Watchtower (Public)
-(wp21.2) Watchtower (Public)
-(wp21.3) Watchtower (Public)
-(wp22.1) Watchtower (Public)
-Sub-Category: Discontinued
-Edition: Awake!
-Edition: Watchtower
+Name: (g18.1) Awake!
+Name: (g18.2) Awake!
+Name: (g18.3) Awake!
+Name: (g19.1) Awake!
+Name: (g19.2) Awake!
+Name: (g19.3) Awake!
+Name: (g20.1) Awake!
+Name: (g20.2) Awake!
+Name: (g20.3) Awake!
+Name: (g21.1) Awake!
+Name: (g21.2) Awake!
+Name: (g21.3) Awake!
+Name: (g22.1) Awake!
+Name: (wp18.1) Watchtower (Public)
+Name: (wp18.2) Watchtower (Public)
+Name: (wp18.3) Watchtower (Public)
+Name: (wp19.1) Watchtower (Public)
+Name: (wp19.2) Watchtower (Public)
+Name: (wp19.3) Watchtower (Public)
+Name: (wp20.1) Watchtower (Public)
+Name: (wp20.2) Watchtower (Public)
+Name: (wp20.3) Watchtower (Public)
+Name: (wp21.1) Watchtower (Public)
+Name: (wp21.2) Watchtower (Public)
+Name: (wp21.3) Watchtower (Public)
+Name: (wp22.1) Watchtower (Public)
