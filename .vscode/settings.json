@@ -2,7 +2,9 @@
     "cSpell.words": [
         "bgcolor",
         "describedby",
+        "firestore",
         "fontsource",
+        "getFirestore",
         "jwcd",
         "labelledby",
         "lffi",
