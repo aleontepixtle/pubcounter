@@ -3,28 +3,38 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import TravelExploreRoundedIcon from "@mui/icons-material/TravelExploreRounded";
 import { InputAdornment } from "@mui/material";
-import axios from "axios";
+//import axios from "axios";
+import { database, ref, get } from "../PublicationSearch/firebase/firebase";
 
 const PublicationSearch = () => {
   const [publicationNameOptions, setPublicationNameOptions] = useState([]);
-  const filePath = "GeneratedInventories/Inventory_2024-06-06.json"; // TODO: change this to be the most recent inventory file
-  
+  //const filePath = "GeneratedInventories/Inventory_2024-06-06.json"; // TODO: change this to be the most recent inventory file
+
   useEffect(() => {
     const fetchPublications = async () => {
       try {
-        const response = await axios.get(filePath);
-        const publications = response.data;
-        const publicationNames = publications.map(pub => `${pub.name} (${pub.jwId})`);
-        console.log('Publications Fetched Successfully!');
-        setPublicationNameOptions(publicationNames);
+        //  const response = await axios.get(filePath);
+        //  const publications = response.data;
+        const publicationsRef = ref(database);
+        const snapshot = await get(publicationsRef);
+        if (snapshot.exists()) {
+          const publications = snapshot.val();
+          const publicationNames = publications.map(
+            (pub) => `${pub.name} (${pub.jwId})`
+          );
+          console.log("Publication Database Fetched Successfully!");
+          setPublicationNameOptions(publicationNames);
+        } else {
+          console.error("No data available");
+        }
       } catch (error) {
-        console.error("Error fetching publications:", error);
+        console.error("Error fetching publications from url endpoint:", error);
       }
     };
 
     fetchPublications();
   }, []);
-  
+
   return (
     <Autocomplete
       options={publicationNameOptions}
@@ -32,7 +42,7 @@ const PublicationSearch = () => {
         <TextField
           {...params}
           label="Search For Publication"
-          sx={{ m: 0, width: '35ch' }}
+          sx={{ m: 0, width: "35ch" }}
           InputProps={{
             ...params.InputProps,
             startAdornment: (
@@ -44,9 +54,8 @@ const PublicationSearch = () => {
         />
       )}
       filterOptions={(options, params) => {
-        const filtered = options.filter(
-          (option) =>
-            option.toLowerCase().includes(params.inputValue.toLowerCase())
+        const filtered = options.filter((option) =>
+          option.toLowerCase().includes(params.inputValue.toLowerCase())
         );
 
         if (params.inputValue.length >= 2) {
