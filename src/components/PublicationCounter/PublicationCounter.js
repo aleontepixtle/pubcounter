@@ -9,7 +9,6 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
-import ScaleIcon from "@mui/icons-material/ScaleOutlined";
 import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -67,7 +66,7 @@ const PublicationCounter = () => {
       justifyContent="center"
       alignItems="center"
       minHeight="60vh"
-      p={4}
+      p={7}
     >
       <Stack
         direction="column"
@@ -82,10 +81,6 @@ const PublicationCounter = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography variant="overline text" component="h1">
-            Publication Counter Calculator
-          </Typography>
-          <ScaleIcon></ScaleIcon>
           <PublicationSearch></PublicationSearch>
         </Stack>
 

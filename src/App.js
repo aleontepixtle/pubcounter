@@ -1,6 +1,7 @@
 import "./App.css";
 import PublicationCounter from "./components/PublicationCounter/PublicationCounter";
-import packageJson from '../package.json';
+import PubCounterFlyoutNav from "./components/PubCounterFlyoutNav/PubCounterFlyoutNav";
+import packageJson from "../package.json";
 
 const version = packageJson.version;
 
@@ -8,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h6>PubCounter v{version}</h6>
+        <PubCounterFlyoutNav></PubCounterFlyoutNav>
       </header>
       <PublicationCounter></PublicationCounter>
     </div>
