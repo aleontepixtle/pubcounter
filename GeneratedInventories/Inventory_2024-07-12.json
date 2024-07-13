@@ -1,0 +1,839 @@
+[
+    {
+        "language": "English",
+        "category": "Bibles",
+        "name": "New World Translation",
+        "jwId": "nwt",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Bibles",
+        "name": "New World Translation (pocket-size)",
+        "jwId": "nwtpkt",
+        "edition": "Pocket-Sized",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Bibles",
+        "name": "New World Translation (Gospels)",
+        "jwId": "nwsty",
+        "edition": "Study Bible",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Ministry School",
+        "jwId": "be",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Teach Us",
+        "jwId": "bhs",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Bearing Witness",
+        "jwId": "bt",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "My Follower",
+        "jwId": "cf",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Close to Jehovah",
+        "jwId": "cl",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Family Happiness",
+        "jwId": "fy",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Imitate",
+        "jwId": "ia",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Jeremiah",
+        "jwId": "jr",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Jesus\u2014The Way",
+        "jwId": "jy",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "God's Kingdom Rules!",
+        "jwId": "kr",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Learn From the Bible",
+        "jwId": "lfb",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Enjoy Life Forever! (Book)",
+        "jwId": "lff",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Teacher",
+        "jwId": "lr",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Remain in God's Love",
+        "jwId": "lvs",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Organized",
+        "jwId": "od",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Pure Worship",
+        "jwId": "rr",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Sing Out Joyfully",
+        "jwId": "sjj",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Sing Out Joyfully (large size)",
+        "jwId": "sjjls",
+        "edition": "Large-Print",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Sing Out Joyfully\u2014Lyrics Only",
+        "jwId": "sjjyls",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Young People Ask, Volume 1",
+        "jwId": "yp1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Books",
+        "name": "Young People Ask, Volume 2",
+        "jwId": "yp2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Reading and Writing",
+        "jwId": "ay",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Bible's Message",
+        "jwId": "bm",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Education",
+        "jwId": "ed",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Good News",
+        "jwId": "fg",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Happy Family",
+        "jwId": "hf",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Happy Life",
+        "jwId": "hl",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Jehovah's Will",
+        "jwId": "jl",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Satisfying Life",
+        "jwId": "la",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Was Life Created?",
+        "jwId": "lc",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Listen to God",
+        "jwId": "ld",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Origin of Life",
+        "jwId": "lf",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Enjoy Life Forever! (Brochure)",
+        "jwId": "lffi",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Listen and Live",
+        "jwId": "ll",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "My Bible Lessons",
+        "jwId": "mb",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Road to Life",
+        "jwId": "ol",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Lasting Peace",
+        "jwId": "pc",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Pathway",
+        "jwId": "ph",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Return to Jehovah",
+        "jwId": "rj",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Real Faith",
+        "jwId": "rk",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Spirits of the Dead",
+        "jwId": "sp",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Teaching",
+        "jwId": "th",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Wisdom From the Gospels",
+        "jwId": "wfg",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Why Worship God",
+        "jwId": "wj",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "Teach Your Children",
+        "jwId": "yc",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Brochures",
+        "name": "10 Questions",
+        "jwId": "ypq",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Forms & Supplies",
+        "name": "Contact card for jw.org",
+        "jwId": "jwcd1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Forms & Supplies",
+        "name": "Contact card for jw.org",
+        "jwId": "jwcd4",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Forms & Supplies",
+        "name": "Contact card for free Bible course",
+        "jwId": "jwcd9",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Forms & Supplies",
+        "name": "Contact card for free Bible course",
+        "jwId": "jwcd10",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Forms & Supplies",
+        "name": "Field Service Report",
+        "jwId": "S-4",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Forms & Supplies",
+        "name": "House-to-House Record",
+        "jwId": "S-8",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Forms & Supplies",
+        "name": "Transaction Record",
+        "jwId": "S-24",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "Invitation to Congregation Meetings",
+        "jwId": "inv",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "View the Bible",
+        "jwId": "T-30",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "View the Future",
+        "jwId": "T-31",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "Happy Family Life",
+        "jwId": "T-32",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "Who Controls the World?",
+        "jwId": "T-33",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "Will Suffering End?",
+        "jwId": "T-34",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "Live Again",
+        "jwId": "T-35",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "Kingdom",
+        "jwId": "T-36",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Tracts",
+        "name": "Website tract",
+        "jwId": "T-37",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g18.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g18.2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g18.3",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g19.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g19.2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g19.3",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g20.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g20.2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g20.3",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g21.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g21.2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g21.3",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g22.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Awake!",
+        "jwId": "g23.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp18.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp18.2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp18.3",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp19.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp19.2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp19.3",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp20.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp20.2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp20.3",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp21.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp21.2",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp21.3",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp22.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    },
+    {
+        "language": "English",
+        "category": "Public Magazines",
+        "name": "Watchtower (Public)",
+        "jwId": "wp23.1",
+        "edition": "Standard",
+        "quantity": 0,
+        "unitWeight": 0
+    }
+]
