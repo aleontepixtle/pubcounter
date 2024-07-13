@@ -3,41 +3,46 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import TravelExploreRoundedIcon from "@mui/icons-material/TravelExploreRounded";
 import { InputAdornment } from "@mui/material";
-//import axios from "axios";
 import { database, ref, get } from "../PublicationSearch/firebase/firebase";
 
-const PublicationSearch = () => {
+const PublicationSearch = ({ onPublicationSelect }) => {
   const [publicationNameOptions, setPublicationNameOptions] = useState([]);
-  //const filePath = "GeneratedInventories/Inventory_2024-06-06.json"; // TODO: change this to be the most recent inventory file
+  const [publications, setPublications] = useState([]);
 
   useEffect(() => {
     const fetchPublications = async () => {
       try {
-        //  const response = await axios.get(filePath);
-        //  const publications = response.data;
         const publicationsRef = ref(database);
         const snapshot = await get(publicationsRef);
         if (snapshot.exists()) {
-          const publications = snapshot.val();
-          const publicationNames = publications.map(
-            (pub) => `${pub.name} (${pub.jwId})`
+          const publicationsData = snapshot.val();
+          const publicationNames = Object.keys(publicationsData).map(
+            (key) => `${publicationsData[key].name} (${publicationsData[key].jwId})`
           );
-          console.log("Publication Database Fetched Successfully!");
+          setPublications(publicationsData);
           setPublicationNameOptions(publicationNames);
         } else {
           console.error("No data available");
         }
       } catch (error) {
-        console.error("Error fetching publications from url endpoint:", error);
+        console.error("Error fetching publications from database:", error);
       }
     };
 
     fetchPublications();
   }, []);
 
+  const handleSelectionChange = (event, value) => {
+    const selected = Object.values(publications).find(
+      (pub) => `${pub.name} (${pub.jwId})` === value
+    );
+    onPublicationSelect(selected);
+  };
+
   return (
     <Autocomplete
       options={publicationNameOptions}
+      onChange={handleSelectionChange}
       renderInput={(params) => (
         <TextField
           {...params}
