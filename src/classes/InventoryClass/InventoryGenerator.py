@@ -94,7 +94,8 @@ def parse_publications(file_path):
                     "name": name,
                     "jwId": jwId,
                     "edition": edition,
-                    "quantity": 0  # Set default quantity to 0
+                    "quantity": 0,  # Set default quantity to 0
+                    "unitWeight": 0
                 }
                 publications.append(publication)
             else:
@@ -104,7 +105,8 @@ def parse_publications(file_path):
                     "name": name,
                     "jwId": jwId,
                     "edition": edition,
-                    "quantity": 0  # Set default quantity to 0
+                    "quantity": 0,  # Set default quantity to 0
+                    "unitWeight": 0
                 })
             name, jwId, edition = None, None, "Standard"  # Reset for next entry
         elif line.startswith("Edition:"):

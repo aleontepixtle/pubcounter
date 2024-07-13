@@ -142,6 +142,7 @@ Name: (g21.1) Awake!
 Name: (g21.2) Awake!
 Name: (g21.3) Awake!
 Name: (g22.1) Awake!
+Name: (g23.1) Awake!
 Name: (wp18.1) Watchtower (Public)
 Name: (wp18.2) Watchtower (Public)
 Name: (wp18.3) Watchtower (Public)
@@ -155,3 +156,4 @@ Name: (wp21.1) Watchtower (Public)
 Name: (wp21.2) Watchtower (Public)
 Name: (wp21.3) Watchtower (Public)
 Name: (wp22.1) Watchtower (Public)
+Name: (wp23.1) Watchtower (Public)
