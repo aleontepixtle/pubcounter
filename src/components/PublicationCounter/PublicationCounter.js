@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./PublicationCounter.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
@@ -15,12 +14,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import PublicationCountPopover from "../PublicationCountPopover/PublicationCountPopover";
 import PublicationSearch from "../PublicationSearch/PublicationSearch";
-import {
-  database,
-  ref,
-  set,
-  get,
-} from "../PublicationSearch/firebase/firebase";
+import { database, ref, set, get } from "../PublicationSearch/firebase/firebase";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -51,6 +45,8 @@ const PublicationCounter = () => {
   const [publicationCount, setPublicationCount] = useState(null);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [selectedPublication, setSelectedPublication] = useState(null);
+  const [publicationBatches, setPublicationBatches] = useState([]);
+  const [totalPublications, setTotalPublications] = useState(0);
 
   const handleInputChange = (e) => {
     let { value } = e.target;
@@ -71,11 +67,7 @@ const PublicationCounter = () => {
   };
 
   const calculatePublicationCount = () => {
-    if (
-      !unitOfMeasureWeight ||
-      !totalWeightOfBatch ||
-      !selectedUnitOfMeasureCount
-    ) {
+    if (!unitOfMeasureWeight || !totalWeightOfBatch || !selectedUnitOfMeasureCount) {
       alert("Please enter valid values for all fields.");
       return;
     }
@@ -83,30 +75,34 @@ const PublicationCounter = () => {
     const calculatedCount =
       (totalWeightOfBatch / unitOfMeasureWeight) * selectedUnitOfMeasureCount;
     setPublicationCount(Math.round(calculatedCount));
-    togglePopover();
+    setTotalPublications((prevTotal) => prevTotal + Math.round(calculatedCount)); // Update total publications
+    setPopoverOpen(true);  // Open the popover after setting the count
   };
 
   const togglePopover = () => {
     setPopoverOpen(!popoverOpen);
   };
 
+  const handleAddMore = () => {
+    if (publicationCount) {
+      setPublicationBatches([...publicationBatches, publicationCount]);
+      setPopoverOpen(false);  // Close the popover after adding
+    }
+  };
+
   const handleSubmit = async () => {
     if (selectedPublication) {
-      // Fetch the entire array of publications
       const publicationsRef = ref(database);
       const snapshot = await get(publicationsRef);
       if (snapshot.exists()) {
         const publicationsArray = snapshot.val();
 
-        // Find the publication with the matching jwId
         const publicationIndex = publicationsArray.findIndex(
           (pub) => pub.jwId === selectedPublication.jwId
         );
         if (publicationIndex !== -1) {
-          // Update the quantity field
-          publicationsArray[publicationIndex].quantity = publicationCount;
+          publicationsArray[publicationIndex].quantity = totalPublications;
 
-          // Save the updated array back to the database
           await set(publicationsRef, publicationsArray);
           alert("Publication quantity updated successfully!");
         } else {
@@ -116,7 +112,9 @@ const PublicationCounter = () => {
         alert("No data available.");
       }
 
-      togglePopover();
+      setPublicationBatches([]);
+      setTotalPublications(0);
+      setPopoverOpen(false);  // Close the popover after submission
     } else {
       alert("Please select a publication.");
     }
@@ -124,6 +122,10 @@ const PublicationCounter = () => {
 
   const handlePublicationSelect = (publication) => {
     setSelectedPublication(publication);
+  };
+
+  const handleEditTotal = (value) => {
+    setTotalPublications(value === "" ? 0 : parseInt(value, 10));
   };
 
   return (
@@ -223,16 +225,20 @@ const PublicationCounter = () => {
           <Button variant="contained" onClick={calculatePublicationCount}>
             Calculate Count
           </Button>
-          {publicationCount !== null && publicationCount !== "" && (
-            <PublicationCountPopover
-              open={popoverOpen}
-              onClose={togglePopover}
-              publicationCount={publicationCount}
-              onSubmit={handleSubmit}
-            />
-          )}
         </Stack>
       </Box>
+      {popoverOpen && (
+        <PublicationCountPopover
+          open={popoverOpen}
+          onClose={togglePopover}
+          publicationCount={publicationCount}
+          onSubmit={handleSubmit}
+          onAddMore={handleAddMore}
+          totalPublications={totalPublications}
+          onEditTotal={handleEditTotal}
+          isPublicationSelected={!!selectedPublication} // Pass the selected publication state
+        />
+      )}
     </ThemeProvider>
   );
 };

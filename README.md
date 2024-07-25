@@ -1,250 +1,297 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+<p align="center">
+  <img src="https://cdn-icons-png.flaticon.com/512/6295/6295417.png" width="100" />
+</p>
+<p align="center">
+    <h1 align="center">PUBCOUNTER</h1>
+</p>
+<p align="center">
+    <em><code>► INSERT-TEXT-HERE</code></em>
+</p>
+<p align="center">
+	<img src="https://img.shields.io/github/license/aleontepixtle/pubcounter?style=flat&color=0080ff" alt="license">
+	<img src="https://img.shields.io/github/last-commit/aleontepixtle/pubcounter?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
+	<img src="https://img.shields.io/github/languages/top/aleontepixtle/pubcounter?style=flat&color=0080ff" alt="repo-top-language">
+	<img src="https://img.shields.io/github/languages/count/aleontepixtle/pubcounter?style=flat&color=0080ff" alt="repo-language-count">
+<p>
+<p align="center">
+		<em>Developed with the software and tools below.</em>
+</p>
+<p align="center">
+	<img src="https://img.shields.io/badge/Firebase-FFCA28.svg?style=flat&logo=Firebase&logoColor=black" alt="Firebase">
+	<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript">
+	<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=flat&logo=HTML5&logoColor=white" alt="HTML5">
+	<img src="https://img.shields.io/badge/React-61DAFB.svg?style=flat&logo=React&logoColor=black" alt="React">
+	<img src="https://img.shields.io/badge/Axios-5A29E4.svg?style=flat&logo=Axios&logoColor=white" alt="Axios">
+	<img src="https://img.shields.io/badge/Python-3776AB.svg?style=flat&logo=Python&logoColor=white" alt="Python">
+	<img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
+</p>
+<hr>
 
+## 🔗 Quick Links
 
+> - [📍 Overview](#-overview)
+> - [📦 Features](#-features)
+> - [📂 Repository Structure](#-repository-structure)
+> - [🧩 Modules](#-modules)
+> - [🚀 Getting Started](#-getting-started)
+>   - [⚙️ Installation](#️-installation)
+>   - [🤖 Running pubcounter](#-running-pubcounter)
+>   - [🧪 Tests](#-tests)
+> - [🛠 Project Roadmap](#-project-roadmap)
+> - [🤝 Contributing](#-contributing)
+> - [📄 License](#-license)
+> - [👏 Acknowledgments](#-acknowledgments)
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-<!--[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]-->
+---
 
+## 📍 Overview
 
+<code>► INSERT-TEXT-HERE</code>
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/aleontepixtle/pubcounter">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+---
 
-<h3 align="center">PubCounter</h3>
+## 📦 Features
 
-  <p align="center">
-    THIS PROJECT IS STILL UNDER ACTIVE DEVELOPMENT, README WILL BE UPDATED ACCORDINGLY. 
-    <br />
-    This app aids in counting batches of publications (Literature) and calculates the count in your batch based on 3 factors:
-    <br />
-    - Weight of a single unit (publication) or weight of a known batch of units (ex. 5 publications)
-    <br />
-    - Weight of the entire batch of publications
-    <br />
-    - The known count in the batch of units
-    <br />
-    <a href="https://github.com/aleontepixtle/pubcounter"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://aleontepixtle.github.io/pubcounter/">View Demo</a>
-    ·
-    <a href="https://github.com/aleontepixtle/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/aleontepixtle/repo_name/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
-</div>
+<code>► INSERT-TEXT-HERE</code>
 
+---
 
+## 📂 Repository Structure
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
+```sh
+└── pubcounter/
+    ├── README.md
+    ├── images
+    │   ├── logo.png
+    │   └── screenshot.png
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    │   ├── GeneratedInventories
+    │   │   ├── Inventory_2024-06-06.json
+    │   │   └── Inventory_2024-07-12.json
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── logo192.png
+    │   ├── logo512.png
+    │   ├── manifest.json
+    │   └── robots.txt
+    └── src
+        ├── App.css
+        ├── App.js
+        ├── App.test.js
+        ├── classes
+        │   └── InventoryClass
+        │       ├── InventoryGenerator.py
+        │       └── PublicationsList.txt
+        ├── components
+        │   ├── PublicationCountPopover
+        │   │   └── PublicationCountPopover.js
+        │   ├── PublicationCounter
+        │   │   ├── PublicationCounter.css
+        │   │   └── PublicationCounter.js
+        │   └── PublicationSearch
+        │       ├── PublicationSearch.js
+        │       └── firebase
+        │           └── firebase.js
+        ├── index.css
+        ├── index.js
+        ├── logo.svg
+        ├── reportWebVitals.js
+        └── setupTests.js
+```
+
+---
+
+## 🧩 Modules
+
+<details closed><summary>.</summary>
+
+| File                                                                                           | Summary                         |
+| ---                                                                                            | ---                             |
+| [package.json](https://github.com/aleontepixtle/pubcounter/blob/master/package.json)           | <code>► INSERT-TEXT-HERE</code> |
+| [package-lock.json](https://github.com/aleontepixtle/pubcounter/blob/master/package-lock.json) | <code>► INSERT-TEXT-HERE</code> |
+
 </details>
 
+<details closed><summary>public</summary>
 
+| File                                                                                          | Summary                         |
+| ---                                                                                           | ---                             |
+| [index.html](https://github.com/aleontepixtle/pubcounter/blob/master/public/index.html)       | <code>► INSERT-TEXT-HERE</code> |
+| [manifest.json](https://github.com/aleontepixtle/pubcounter/blob/master/public/manifest.json) | <code>► INSERT-TEXT-HERE</code> |
+| [robots.txt](https://github.com/aleontepixtle/pubcounter/blob/master/public/robots.txt)       | <code>► INSERT-TEXT-HERE</code> |
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+</details>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<details closed><summary>public.GeneratedInventories</summary>
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+| File                                                                                                                                       | Summary                         |
+| ---                                                                                                                                        | ---                             |
+| [Inventory_2024-07-12.json](https://github.com/aleontepixtle/pubcounter/blob/master/public/GeneratedInventories/Inventory_2024-07-12.json) | <code>► INSERT-TEXT-HERE</code> |
+| [Inventory_2024-06-06.json](https://github.com/aleontepixtle/pubcounter/blob/master/public/GeneratedInventories/Inventory_2024-06-06.json) | <code>► INSERT-TEXT-HERE</code> |
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+</details>
 
+<details closed><summary>src</summary>
 
+| File                                                                                                 | Summary                         |
+| ---                                                                                                  | ---                             |
+| [reportWebVitals.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/reportWebVitals.js) | <code>► INSERT-TEXT-HERE</code> |
+| [App.test.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/App.test.js)               | <code>► INSERT-TEXT-HERE</code> |
+| [setupTests.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/setupTests.js)           | <code>► INSERT-TEXT-HERE</code> |
+| [App.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/App.js)                         | <code>► INSERT-TEXT-HERE</code> |
+| [App.css](https://github.com/aleontepixtle/pubcounter/blob/master/src/App.css)                       | <code>► INSERT-TEXT-HERE</code> |
+| [index.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/index.js)                     | <code>► INSERT-TEXT-HERE</code> |
+| [index.css](https://github.com/aleontepixtle/pubcounter/blob/master/src/index.css)                   | <code>► INSERT-TEXT-HERE</code> |
 
-### Built With
+</details>
 
-* [![Node][Node.js]][Node-url]
-* [![React][React.js]][React-url]
-* [![MaterialUI][MaterialUI.dev]][Material-url]
+<details closed><summary>src.classes.InventoryClass</summary>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+| File                                                                                                                              | Summary                         |
+| ---                                                                                                                               | ---                             |
+| [InventoryGenerator.py](https://github.com/aleontepixtle/pubcounter/blob/master/src/classes/InventoryClass/InventoryGenerator.py) | <code>► INSERT-TEXT-HERE</code> |
+| [PublicationsList.txt](https://github.com/aleontepixtle/pubcounter/blob/master/src/classes/InventoryClass/PublicationsList.txt)   | <code>► INSERT-TEXT-HERE</code> |
 
+</details>
 
-<!-- GETTING STARTED -->
-## Getting Started
+<details closed><summary>src.components.PublicationCountPopover</summary>
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+| File                                                                                                                                                    | Summary                         |
+| ---                                                                                                                                                     | ---                             |
+| [PublicationCountPopover.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/components/PublicationCountPopover/PublicationCountPopover.js) | <code>► INSERT-TEXT-HERE</code> |
 
-### Prerequisites
+</details>
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+<details closed><summary>src.components.PublicationSearch</summary>
 
-### Installation
+| File                                                                                                                                  | Summary                         |
+| ---                                                                                                                                   | ---                             |
+| [PublicationSearch.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/components/PublicationSearch/PublicationSearch.js) | <code>► INSERT-TEXT-HERE</code> |
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+</details>
+
+<details closed><summary>src.components.PublicationSearch.firebase</summary>
+
+| File                                                                                                                         | Summary                         |
+| ---                                                                                                                          | ---                             |
+| [firebase.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/components/PublicationSearch/firebase/firebase.js) | <code>► INSERT-TEXT-HERE</code> |
+
+</details>
+
+<details closed><summary>src.components.PublicationCounter</summary>
+
+| File                                                                                                                                       | Summary                         |
+| ---                                                                                                                                        | ---                             |
+| [PublicationCounter.css](https://github.com/aleontepixtle/pubcounter/blob/master/src/components/PublicationCounter/PublicationCounter.css) | <code>► INSERT-TEXT-HERE</code> |
+| [PublicationCounter.js](https://github.com/aleontepixtle/pubcounter/blob/master/src/components/PublicationCounter/PublicationCounter.js)   | <code>► INSERT-TEXT-HERE</code> |
+
+</details>
+
+---
+
+## 🚀 Getting Started
+
+***Requirements***
+
+Ensure you have the following dependencies installed on your system:
+
+* **JavaScript**: `version x.y.z`
+
+### ⚙️ Installation
+
+1. Clone the pubcounter repository:
+
+```sh
+git clone https://github.com/aleontepixtle/pubcounter
+```
+
+2. Change to the project directory:
+
+```sh
+cd pubcounter
+```
+
+3. Install the dependencies:
+
+```sh
+npm install
+```
+
+### 🤖 Running pubcounter
+
+Use the following command to run pubcounter:
+
+```sh
+node app.js
+```
+
+### 🧪 Tests
+
+To execute tests, run:
+
+```sh
+npm test
+```
+
+---
+
+## 🛠 Project Roadmap
+
+- [X] `► INSERT-TASK-1`
+- [ ] `► INSERT-TASK-2`
+- [ ] `► ...`
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here are several ways you can contribute:
+
+- **[Submit Pull Requests](https://github.com/aleontepixtle/pubcounter/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
+- **[Join the Discussions](https://github.com/aleontepixtle/pubcounter/discussions)**: Share your insights, provide feedback, or ask questions.
+- **[Report Issues](https://github.com/aleontepixtle/pubcounter/issues)**: Submit bugs found or log feature requests for Pubcounter.
+
+<details closed>
+    <summary>Contributing Guidelines</summary>
+
+1. **Fork the Repository**: Start by forking the project repository to your GitHub account.
+2. **Clone Locally**: Clone the forked repository to your local machine using a Git client.
    ```sh
-   git clone https://github.com/aleontepixtle/pubcounter.git
+   git clone https://github.com/aleontepixtle/pubcounter
    ```
-3. Install NPM packages
+3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
    ```sh
-   npm install
+   git checkout -b new-feature-x
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. **Make Your Changes**: Develop and test your changes locally.
+5. **Commit Your Changes**: Commit with a clear message describing your updates.
+   ```sh
+   git commit -m 'Implemented new feature x.'
    ```
+6. **Push to GitHub**: Push the changes to your forked repository.
+   ```sh
+   git push origin new-feature-x
+   ```
+7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Once your PR is reviewed and approved, it will be merged into the main branch.
 
+</details>
 
+---
 
-<!-- USAGE EXAMPLES -->
-## Usage
+## 📄 License
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+---
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## 👏 Acknowledgments
 
+- List any resources, contributors, inspiration, etc. here.
 
+[**Return**](#-quick-links)
 
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/aleontepixtle/pubcounter/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/aleontepixtle/pubcounter](https://github.com/aleontepixtle/pubcounter)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com
-[Node.js]: https://iconduck.com/icons/94670/nodejs?shared
+---
