@@ -55,9 +55,11 @@ const PublicationCountPopover = ({
   publicationCount,
   onSubmit,
   onAddMore,
+  onDoneAdding, // New prop for Done Adding button
   totalPublications,
   onEditTotal,
   isPublicationSelected, // New prop to determine if a publication is selected
+  isAddingMore, // New prop to determine if user is adding more
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [localTotal, setLocalTotal] = useState(totalPublications);
@@ -80,10 +82,14 @@ const PublicationCountPopover = ({
 
   const toggleEditMode = () => {
     if (editMode && localTotal === "") {
-      setLocalTotal(publicationCount);
+      setLocalTotal(totalPublications);
     }
     setEditMode((prev) => !prev);
   };
+
+  const displayTotalPublications = isAddingMore
+    ? totalPublications
+    : localTotal;
 
   return (
     <Backdrop
@@ -106,12 +112,19 @@ const PublicationCountPopover = ({
           <p>
             Publication Count: <b>{publicationCount}</b>
           </p>
-          <Button variant="contained" onClick={onAddMore} sx={{ m: 1, bgcolor: "#b9b012" }}>
-            Add More
-          </Button>
-          {isPublicationSelected && (
-            <Button variant="contained" onClick={onSubmit} sx={{ m: 1, bgcolor: "#b9b012" }}>
-              Submit
+          <>
+            <Button variant="contained" onClick={onAddMore} sx={{ m: 1, bgcolor: "#b9b012" }}>
+              Add More
+            </Button>
+            {isPublicationSelected && !isAddingMore && (
+              <Button variant="contained" onClick={onSubmit} sx={{ m: 1, bgcolor: "#b9b012" }}>
+                Submit
+              </Button>
+            )}
+          </>
+          {isAddingMore && ( // Show Done Adding button if adding more
+            <Button variant="contained" onClick={onDoneAdding} sx={{ m: 1, bgcolor: "#b9b012" }}>
+              Done Adding
             </Button>
           )}
           <Box sx={{ mt: 2 }}>
@@ -154,7 +167,7 @@ const PublicationCountPopover = ({
             ) : (
               <Box display="flex" alignItems="center" justifyContent="center">
                 <Typography variant="body1" sx={{ color: 'white' }}>
-                  Total Publications to Submit: <b>{localTotal === "" || localTotal === 0 ? publicationCount : localTotal}</b>
+                  Total Publications to Submit: <b>{displayTotalPublications}</b>
                 </Typography>
                 <IconButton onClick={toggleEditMode}>
                   <EditIcon sx={{ color: 'white' }} />

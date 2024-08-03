@@ -47,6 +47,7 @@ const PublicationCounter = () => {
   const [selectedPublication, setSelectedPublication] = useState(null);
   const [publicationBatches, setPublicationBatches] = useState([]);
   const [totalPublications, setTotalPublications] = useState(0);
+  const [isAddingMore, setIsAddingMore] = useState(false);
 
   const handleInputChange = (e) => {
     let { value } = e.target;
@@ -60,10 +61,12 @@ const PublicationCounter = () => {
     value = value.replace(/\D|^0+/g, "");
     value = value === "" ? "" : parseInt(value);
     setUnitOfMeasureWeight(value);
+    resetTotalPublications(); // Reset total publications when changing unit of measure
   };
 
   const handleCountChange = (e) => {
     setSelectedCount(parseInt(e.target.value));
+    resetTotalPublications(); // Reset total publications when changing unit of measure count
   };
 
   const calculatePublicationCount = () => {
@@ -75,19 +78,30 @@ const PublicationCounter = () => {
     const calculatedCount =
       (totalWeightOfBatch / unitOfMeasureWeight) * selectedUnitOfMeasureCount;
     setPublicationCount(Math.round(calculatedCount));
-    setTotalPublications((prevTotal) => prevTotal + Math.round(calculatedCount)); // Update total publications
     setPopoverOpen(true);  // Open the popover after setting the count
+    if (!isAddingMore) {
+      setTotalPublications(Math.round(calculatedCount)); // Set total publications to calculated count if not adding more
+    }
   };
 
   const togglePopover = () => {
-    setPopoverOpen(!popoverOpen);
+    if (!isAddingMore) {
+      setPopoverOpen(!popoverOpen);
+    }
   };
 
   const handleAddMore = () => {
     if (publicationCount) {
+      setTotalPublications((prevTotal) => prevTotal + publicationCount); // Add to total publications
       setPublicationBatches([...publicationBatches, publicationCount]);
       setPopoverOpen(false);  // Close the popover after adding
+      setIsAddingMore(true);  // Set adding more state to true
     }
+  };
+
+  const handleDoneAdding = () => {
+    setIsAddingMore(false);  // Set adding more state to false
+    setPopoverOpen(true);  // Open the popover after done adding
   };
 
   const handleSubmit = async () => {
@@ -115,6 +129,7 @@ const PublicationCounter = () => {
       setPublicationBatches([]);
       setTotalPublications(0);
       setPopoverOpen(false);  // Close the popover after submission
+      setIsAddingMore(false);  // Reset adding more state
     } else {
       alert("Please select a publication.");
     }
@@ -122,10 +137,26 @@ const PublicationCounter = () => {
 
   const handlePublicationSelect = (publication) => {
     setSelectedPublication(publication);
+    reset(); // Reset state when a new publication is selected
   };
 
   const handleEditTotal = (value) => {
     setTotalPublications(value === "" ? 0 : parseInt(value, 10));
+  };
+
+  const reset = () => {
+    setUnitOfMeasureWeight(0);
+    setTotalWeightOfBatch(0);
+    setSelectedCount(1);
+    setPublicationCount(null);
+    setPublicationBatches([]);
+    setTotalPublications(0);
+    setPopoverOpen(false);
+    setIsAddingMore(false); // Reset adding more state
+  };
+
+  const resetTotalPublications = () => {
+    setTotalPublications(0); // Reset total publications
   };
 
   return (
@@ -154,7 +185,7 @@ const PublicationCounter = () => {
               Publication Counter Calculator
             </Typography>
             <ScaleIcon />
-            <PublicationSearch onPublicationSelect={handlePublicationSelect} />
+            <PublicationSearch onPublicationSelect={handlePublicationSelect} disabled={isAddingMore} />
           </Stack>
 
           <Stack direction="column" spacing={3}>
@@ -169,10 +200,10 @@ const PublicationCounter = () => {
                 value={selectedUnitOfMeasureCount.toString()}
                 onChange={handleCountChange}
               >
-                <FormControlLabel value="1" control={<Radio />} label="1" />
-                <FormControlLabel value="2" control={<Radio />} label="2" />
-                <FormControlLabel value="5" control={<Radio />} label="5" />
-                <FormControlLabel value="10" control={<Radio />} label="10" />
+                <FormControlLabel value="1" control={<Radio />} label="1" disabled={isAddingMore} />
+                <FormControlLabel value="2" control={<Radio />} label="2" disabled={isAddingMore} />
+                <FormControlLabel value="5" control={<Radio />} label="5" disabled={isAddingMore} />
+                <FormControlLabel value="10" control={<Radio />} label="10" disabled={isAddingMore} />
               </RadioGroup>
             </FormControl>
           </Stack>
@@ -193,6 +224,14 @@ const PublicationCounter = () => {
                   "aria-label": "weight",
                   onFocus: () => setUnitOfMeasureWeight(""),
                 }}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'green', // Green border color
+                    },
+                  },
+                }}
+                disabled={isAddingMore} // Disable if adding more
               />
               <FormHelperText id="outlined-weight-helper-text">
                 Weight
@@ -216,6 +255,13 @@ const PublicationCounter = () => {
                   "aria-label": "weight",
                   onFocus: () => setTotalWeightOfBatch(""),
                 }}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'green', // Green border color
+                    },
+                  },
+                }}
               />
               <FormHelperText id="outlined-weight-helper-text">
                 Weight
@@ -234,9 +280,11 @@ const PublicationCounter = () => {
           publicationCount={publicationCount}
           onSubmit={handleSubmit}
           onAddMore={handleAddMore}
+          onDoneAdding={handleDoneAdding} // New prop for Done Adding button
           totalPublications={totalPublications}
           onEditTotal={handleEditTotal}
           isPublicationSelected={!!selectedPublication} // Pass the selected publication state
+          isAddingMore={isAddingMore} // Pass the isAddingMore state
         />
       )}
     </ThemeProvider>
