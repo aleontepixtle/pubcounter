@@ -12,6 +12,11 @@ import ScaleIcon from "@mui/icons-material/ScaleOutlined";
 import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import PublicationCountPopover from "../PublicationCountPopover/PublicationCountPopover";
 import PublicationSearch from "../PublicationSearch/PublicationSearch";
 import { database, ref, set, get } from "../PublicationSearch/firebase/firebase";
@@ -48,6 +53,7 @@ const PublicationCounter = () => {
   const [publicationBatches, setPublicationBatches] = useState([]);
   const [totalPublications, setTotalPublications] = useState(0);
   const [isAddingMore, setIsAddingMore] = useState(false);
+  const [warningOpen, setWarningOpen] = useState(false);
 
   const handleInputChange = (e) => {
     let { value } = e.target;
@@ -85,7 +91,9 @@ const PublicationCounter = () => {
   };
 
   const togglePopover = () => {
-    if (!isAddingMore) {
+    if (!isAddingMore && totalPublications > 0 && publicationBatches.length > 0) {
+      setWarningOpen(true);
+    } else {
       setPopoverOpen(!popoverOpen);
     }
   };
@@ -157,6 +165,16 @@ const PublicationCounter = () => {
 
   const resetTotalPublications = () => {
     setTotalPublications(0); // Reset total publications
+  };
+
+  const handleWarningClose = () => {
+    setWarningOpen(false);
+  };
+
+  const handleWarningAccept = () => {
+    setWarningOpen(false);
+    setPopoverOpen(false); // Close the popover
+    reset();
   };
 
   return (
@@ -287,6 +305,26 @@ const PublicationCounter = () => {
           isAddingMore={isAddingMore} // Pass the isAddingMore state
         />
       )}
+      <Dialog
+        open={warningOpen}
+        onClose={handleWarningClose}
+      >
+        <DialogTitle>Warning</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            You have not submitted your count totals. If you close the popover, your counts will be lost.
+            Would you like to keep counting or reset the counts?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleWarningClose} color="primary">
+            Keep Counting
+          </Button>
+          <Button onClick={handleWarningAccept} color="primary" autoFocus>
+            Accept & Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </ThemeProvider>
   );
 };

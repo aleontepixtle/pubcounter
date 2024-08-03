@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
-import { Box, ThemeProvider, Button, createTheme, IconButton, TextField, InputAdornment, Typography } from "@mui/material";
+import {
+  Box,
+  ThemeProvider,
+  Button,
+  createTheme,
+  IconButton,
+  TextField,
+  InputAdornment,
+  Typography,
+} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
 const theme = createTheme({
@@ -26,22 +35,22 @@ const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-              borderColor: 'white', // Default border color
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": {
+              borderColor: "white", // Default border color
             },
-            '&:hover fieldset': {
-              borderColor: 'yellow', // Border color on hover
+            "&:hover fieldset": {
+              borderColor: "yellow", // Border color on hover
             },
-            '&.Mui-focused fieldset': {
-              borderColor: 'white', // Border color when focused
+            "&.Mui-focused fieldset": {
+              borderColor: "white", // Border color when focused
             },
           },
-          '& .MuiInputBase-input': {
-            color: 'white', // Text color
+          "& .MuiInputBase-input": {
+            color: "white", // Text color
           },
-          '& .MuiInputLabel-root': {
-            color: 'white', // Label color
+          "& .MuiInputLabel-root": {
+            color: "white", // Label color
           },
         },
       },
@@ -95,7 +104,13 @@ const PublicationCountPopover = ({
     <Backdrop
       sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={open}
-      onClick={onClose}
+      onClick={(e) => {
+        if (isAddingMore) {
+          e.stopPropagation();
+        } else {
+          onClose();
+        }
+      }}
     >
       <ThemeProvider theme={theme}>
         <Box
@@ -105,25 +120,37 @@ const PublicationCountPopover = ({
             borderRadius: 1,
             p: 2,
             textAlign: "center",
-            background: 'linear-gradient(90deg, rgba(219,219,219,1) 0%, rgba(66,30,110,1) 100%)', // Gradient background
+            background: 'linear-gradient(90deg, #1CB5E0 0%, #000851 100%)'// Gradient background
           }}
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()} // Prevent closing on box click
         >
           <p>
             Publication Count: <b>{publicationCount}</b>
           </p>
           <>
-            <Button variant="contained" onClick={onAddMore} sx={{ m: 1, bgcolor: "#b9b012" }}>
+            <Button
+              variant="contained"
+              onClick={onAddMore}
+              sx={{ m: 1, bgcolor: "#ffbd03" }}
+            >
               Add More
             </Button>
             {isPublicationSelected && !isAddingMore && (
-              <Button variant="contained" onClick={onSubmit} sx={{ m: 1, bgcolor: "#b9b012" }}>
+              <Button
+                variant="contained"
+                onClick={onSubmit}
+                sx={{ m: 1, bgcolor: "#ffbd03" }}
+              >
                 Submit
               </Button>
             )}
           </>
           {isAddingMore && ( // Show Done Adding button if adding more
-            <Button variant="contained" onClick={onDoneAdding} sx={{ m: 1, bgcolor: "#b9b012" }}>
+            <Button
+              variant="contained"
+              onClick={onDoneAdding}
+              sx={{ m: 1, bgcolor: "#ffbd03" }}
+            >
               Done Adding
             </Button>
           )}
@@ -136,29 +163,29 @@ const PublicationCountPopover = ({
                 value={localTotal}
                 onChange={handleTotalChange}
                 sx={{
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: 'white', // Default border color
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "white", // Default border color
                     },
-                    '&:hover fieldset': {
-                      borderColor: 'yellow', // Border color on hover
+                    "&:hover fieldset": {
+                      borderColor: "yellow", // Border color on hover
                     },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'white', // Border color when focused
+                    "&.Mui-focused fieldset": {
+                      borderColor: "white", // Border color when focused
                     },
                   },
-                  '& .MuiInputBase-input': {
-                    color: 'white', // Text color
+                  "& .MuiInputBase-input": {
+                    color: "white", // Text color
                   },
-                  '& .MuiInputLabel-root': {
-                    color: 'white', // Label color
+                  "& .MuiInputLabel-root": {
+                    color: "white", // Label color
                   },
                 }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton onClick={toggleEditMode}>
-                        <EditIcon sx={{ color: 'white' }} />
+                        <EditIcon sx={{ color: "white" }} />
                       </IconButton>
                     </InputAdornment>
                   ),
@@ -166,11 +193,12 @@ const PublicationCountPopover = ({
               />
             ) : (
               <Box display="flex" alignItems="center" justifyContent="center">
-                <Typography variant="body1" sx={{ color: 'white' }}>
-                  Total Publications to Submit: <b>{displayTotalPublications}</b>
+                <Typography variant="body1" sx={{ color: "white" }}>
+                  Total Publications to Submit:{" "}
+                  <b>{displayTotalPublications}</b>
                 </Typography>
                 <IconButton onClick={toggleEditMode}>
-                  <EditIcon sx={{ color: 'white' }} />
+                  <EditIcon sx={{ color: "white" }} />
                 </IconButton>
               </Box>
             )}
