@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./PublicationCounter.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
@@ -13,14 +12,14 @@ import ScaleIcon from "@mui/icons-material/ScaleOutlined";
 import Box from "@mui/material/Box";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import PublicationCountPopover from "../PublicationCountPopover/PublicationCountPopover";
 import PublicationSearch from "../PublicationSearch/PublicationSearch";
-import {
-  database,
-  ref,
-  set,
-  get,
-} from "../PublicationSearch/firebase/firebase";
+import { database, ref, set, get } from "../PublicationSearch/firebase/firebase";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -51,6 +50,10 @@ const PublicationCounter = () => {
   const [publicationCount, setPublicationCount] = useState(null);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [selectedPublication, setSelectedPublication] = useState(null);
+  const [publicationBatches, setPublicationBatches] = useState([]);
+  const [totalPublications, setTotalPublications] = useState(0);
+  const [isAddingMore, setIsAddingMore] = useState(false);
+  const [warningOpen, setWarningOpen] = useState(false);
 
   const handleInputChange = (e) => {
     let { value } = e.target;
@@ -64,18 +67,16 @@ const PublicationCounter = () => {
     value = value.replace(/\D|^0+/g, "");
     value = value === "" ? "" : parseInt(value);
     setUnitOfMeasureWeight(value);
+    resetTotalPublications(); // Reset total publications when changing unit of measure
   };
 
   const handleCountChange = (e) => {
     setSelectedCount(parseInt(e.target.value));
+    resetTotalPublications(); // Reset total publications when changing unit of measure count
   };
 
   const calculatePublicationCount = () => {
-    if (
-      !unitOfMeasureWeight ||
-      !totalWeightOfBatch ||
-      !selectedUnitOfMeasureCount
-    ) {
+    if (!unitOfMeasureWeight || !totalWeightOfBatch || !selectedUnitOfMeasureCount) {
       alert("Please enter valid values for all fields.");
       return;
     }
@@ -83,30 +84,47 @@ const PublicationCounter = () => {
     const calculatedCount =
       (totalWeightOfBatch / unitOfMeasureWeight) * selectedUnitOfMeasureCount;
     setPublicationCount(Math.round(calculatedCount));
-    togglePopover();
+    setPopoverOpen(true);  // Open the popover after setting the count
+    if (!isAddingMore) {
+      setTotalPublications(Math.round(calculatedCount)); // Set total publications to calculated count if not adding more
+    }
   };
 
   const togglePopover = () => {
-    setPopoverOpen(!popoverOpen);
+    if (!isAddingMore && totalPublications > 0 && publicationBatches.length > 0) {
+      setWarningOpen(true);
+    } else {
+      setPopoverOpen(!popoverOpen);
+    }
+  };
+
+  const handleAddMore = () => {
+    if (publicationCount) {
+      setTotalPublications((prevTotal) => prevTotal + publicationCount); // Add to total publications
+      setPublicationBatches([...publicationBatches, publicationCount]);
+      setPopoverOpen(false);  // Close the popover after adding
+      setIsAddingMore(true);  // Set adding more state to true
+    }
+  };
+
+  const handleDoneAdding = () => {
+    setIsAddingMore(false);  // Set adding more state to false
+    setPopoverOpen(true);  // Open the popover after done adding
   };
 
   const handleSubmit = async () => {
     if (selectedPublication) {
-      // Fetch the entire array of publications
       const publicationsRef = ref(database);
       const snapshot = await get(publicationsRef);
       if (snapshot.exists()) {
         const publicationsArray = snapshot.val();
 
-        // Find the publication with the matching jwId
         const publicationIndex = publicationsArray.findIndex(
           (pub) => pub.jwId === selectedPublication.jwId
         );
         if (publicationIndex !== -1) {
-          // Update the quantity field
-          publicationsArray[publicationIndex].quantity = publicationCount;
+          publicationsArray[publicationIndex].quantity = totalPublications;
 
-          // Save the updated array back to the database
           await set(publicationsRef, publicationsArray);
           alert("Publication quantity updated successfully!");
         } else {
@@ -116,7 +134,10 @@ const PublicationCounter = () => {
         alert("No data available.");
       }
 
-      togglePopover();
+      setPublicationBatches([]);
+      setTotalPublications(0);
+      setPopoverOpen(false);  // Close the popover after submission
+      setIsAddingMore(false);  // Reset adding more state
     } else {
       alert("Please select a publication.");
     }
@@ -124,6 +145,36 @@ const PublicationCounter = () => {
 
   const handlePublicationSelect = (publication) => {
     setSelectedPublication(publication);
+    reset(); // Reset state when a new publication is selected
+  };
+
+  const handleEditTotal = (value) => {
+    setTotalPublications(value === "" ? 0 : parseInt(value, 10));
+  };
+
+  const reset = () => {
+    setUnitOfMeasureWeight(0);
+    setTotalWeightOfBatch(0);
+    setSelectedCount(1);
+    setPublicationCount(null);
+    setPublicationBatches([]);
+    setTotalPublications(0);
+    setPopoverOpen(false);
+    setIsAddingMore(false); // Reset adding more state
+  };
+
+  const resetTotalPublications = () => {
+    setTotalPublications(0); // Reset total publications
+  };
+
+  const handleWarningClose = () => {
+    setWarningOpen(false);
+  };
+
+  const handleWarningAccept = () => {
+    setWarningOpen(false);
+    setPopoverOpen(false); // Close the popover
+    reset();
   };
 
   return (
@@ -152,7 +203,7 @@ const PublicationCounter = () => {
               Publication Counter Calculator
             </Typography>
             <ScaleIcon />
-            <PublicationSearch onPublicationSelect={handlePublicationSelect} />
+            <PublicationSearch onPublicationSelect={handlePublicationSelect} disabled={isAddingMore} />
           </Stack>
 
           <Stack direction="column" spacing={3}>
@@ -167,10 +218,10 @@ const PublicationCounter = () => {
                 value={selectedUnitOfMeasureCount.toString()}
                 onChange={handleCountChange}
               >
-                <FormControlLabel value="1" control={<Radio />} label="1" />
-                <FormControlLabel value="2" control={<Radio />} label="2" />
-                <FormControlLabel value="5" control={<Radio />} label="5" />
-                <FormControlLabel value="10" control={<Radio />} label="10" />
+                <FormControlLabel value="1" control={<Radio />} label="1" disabled={isAddingMore} />
+                <FormControlLabel value="2" control={<Radio />} label="2" disabled={isAddingMore} />
+                <FormControlLabel value="5" control={<Radio />} label="5" disabled={isAddingMore} />
+                <FormControlLabel value="10" control={<Radio />} label="10" disabled={isAddingMore} />
               </RadioGroup>
             </FormControl>
           </Stack>
@@ -191,6 +242,14 @@ const PublicationCounter = () => {
                   "aria-label": "weight",
                   onFocus: () => setUnitOfMeasureWeight(""),
                 }}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'green', // Green border color
+                    },
+                  },
+                }}
+                disabled={isAddingMore} // Disable if adding more
               />
               <FormHelperText id="outlined-weight-helper-text">
                 Weight
@@ -214,6 +273,13 @@ const PublicationCounter = () => {
                   "aria-label": "weight",
                   onFocus: () => setTotalWeightOfBatch(""),
                 }}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                      borderColor: 'green', // Green border color
+                    },
+                  },
+                }}
               />
               <FormHelperText id="outlined-weight-helper-text">
                 Weight
@@ -223,16 +289,42 @@ const PublicationCounter = () => {
           <Button variant="contained" onClick={calculatePublicationCount}>
             Calculate Count
           </Button>
-          {publicationCount !== null && publicationCount !== "" && (
-            <PublicationCountPopover
-              open={popoverOpen}
-              onClose={togglePopover}
-              publicationCount={publicationCount}
-              onSubmit={handleSubmit}
-            />
-          )}
         </Stack>
       </Box>
+      {popoverOpen && (
+        <PublicationCountPopover
+          open={popoverOpen}
+          onClose={togglePopover}
+          publicationCount={publicationCount}
+          onSubmit={handleSubmit}
+          onAddMore={handleAddMore}
+          onDoneAdding={handleDoneAdding} // New prop for Done Adding button
+          totalPublications={totalPublications}
+          onEditTotal={handleEditTotal}
+          isPublicationSelected={!!selectedPublication} // Pass the selected publication state
+          isAddingMore={isAddingMore} // Pass the isAddingMore state
+        />
+      )}
+      <Dialog
+        open={warningOpen}
+        onClose={handleWarningClose}
+      >
+        <DialogTitle>Warning</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            You have not submitted your count totals. If you close the popover, your counts will be lost.
+            Would you like to keep counting or reset the counts?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleWarningClose} color="primary">
+            Keep Counting
+          </Button>
+          <Button onClick={handleWarningAccept} color="primary" autoFocus>
+            Accept & Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </ThemeProvider>
   );
 };
