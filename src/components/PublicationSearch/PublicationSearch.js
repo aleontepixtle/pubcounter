@@ -5,7 +5,7 @@ import TravelExploreRoundedIcon from "@mui/icons-material/TravelExploreRounded";
 import { InputAdornment } from "@mui/material";
 import { database, ref, get } from "../PublicationSearch/firebase/firebase";
 
-const PublicationSearch = ({ onPublicationSelect, disabled }) => { // Add disabled prop
+const PublicationSearch = ({ onPublicationSelect }) => {
   const [publicationNameOptions, setPublicationNameOptions] = useState([]);
   const [publications, setPublications] = useState([]);
 
@@ -56,7 +56,6 @@ const PublicationSearch = ({ onPublicationSelect, disabled }) => { // Add disabl
               </InputAdornment>
             ),
           }}
-          disabled={disabled} // Disable if prop is true
         />
       )}
       filterOptions={(options, params) => {
