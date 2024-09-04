@@ -36,7 +36,8 @@ const PublicationSearch = ({ onPublicationSelect }) => {
     const selected = Object.values(publications).find(
       (pub) => `${pub.name} (${pub.jwId})` === value
     );
-    onPublicationSelect(selected);
+    // If no publication is selected (value is null), pass null to reset the fields
+    onPublicationSelect(selected || null);
   };
 
   return (

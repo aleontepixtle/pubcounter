@@ -51,6 +51,7 @@ const PublicationCounter = () => {
   const [publicationCount, setPublicationCount] = useState(null);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [selectedPublication, setSelectedPublication] = useState(null);
+   const [previousPublication, setPreviousPublication] = useState(null);
 
   const handleInputChange = (e) => {
     let { value } = e.target;
@@ -105,10 +106,13 @@ const PublicationCounter = () => {
         if (publicationIndex !== -1) {
           // Update the quantity field
           publicationsArray[publicationIndex].quantity = publicationCount;
-
           // Save the updated array back to the database
-          await set(publicationsRef, publicationsArray);
-          alert("Publication quantity updated successfully!");
+          try {
+            await set(publicationsRef, publicationsArray);
+            alert("Publication quantity updated successfully!");
+          } catch (error) {
+            alert("Publication could not be submitted. Please check database WRITE Permission!", error);
+          }
         } else {
           alert("Publication not found.");
         }
@@ -123,7 +127,18 @@ const PublicationCounter = () => {
   };
 
   const handlePublicationSelect = (publication) => {
-    setSelectedPublication(publication);
+    if (publication === null) {
+      // Clear the values if the selected publication is cleared
+      setUnitOfMeasureWeight(0);  // Clear Unit of Measure
+      setTotalWeightOfBatch(0);    // Clear Total Weight of Batch
+    } else if (publication !== previousPublication) {
+      // If a different publication is selected, reset the fields
+      setUnitOfMeasureWeight(0);  // Reset Unit of Measure
+      setTotalWeightOfBatch(0);    // Reset Total Weight of Batch
+    }
+    
+    setPreviousPublication(publication); // Update previousPublication to the new one (or null)
+    setSelectedPublication(publication); // Update selectedPublication (or null)
   };
 
   return (
