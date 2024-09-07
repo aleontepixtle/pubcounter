@@ -51,7 +51,8 @@ const PublicationCounter = () => {
   const [publicationCount, setPublicationCount] = useState(null);
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [selectedPublication, setSelectedPublication] = useState(null);
-   const [previousPublication, setPreviousPublication] = useState(null);
+  const [previousPublication, setPreviousPublication] = useState(null);
+  const [isModified, setIsModified] = useState(false); // New state to track if the count was modified
 
   const handleInputChange = (e) => {
     let { value } = e.target;
@@ -84,11 +85,25 @@ const PublicationCounter = () => {
     const calculatedCount =
       (totalWeightOfBatch / unitOfMeasureWeight) * selectedUnitOfMeasureCount;
     setPublicationCount(Math.round(calculatedCount));
+    setIsModified(false); // Reset modified flag since we're recalculating
     togglePopover();
+  };
+
+  const handleSaveModifiedCount = (newCount) => {
+    setPublicationCount(newCount); // Update the count with the new modified value
+    setIsModified(true); // Mark the count as modified
   };
 
   const togglePopover = () => {
     setPopoverOpen(!popoverOpen);
+  };
+
+  // Reset the count and recalculate when the popover is dismissed
+  const handlePopoverClose = () => {
+    setPublicationCount(null); // Clear the count
+    calculatePublicationCount(); // Recalculate the count based on the input values
+    setPopoverOpen(false); // Close the popover
+    setPublicationCount(null); // Clear the count if it was modified
   };
 
   const handleSubmit = async () => {
@@ -111,7 +126,10 @@ const PublicationCounter = () => {
             await set(publicationsRef, publicationsArray);
             alert("Publication quantity updated successfully!");
           } catch (error) {
-            alert("Publication could not be submitted. Please check database WRITE Permission!", error);
+            alert(
+              "Publication could not be submitted. Please check database WRITE Permission!",
+              error
+            );
           }
         } else {
           alert("Publication not found.");
@@ -129,14 +147,14 @@ const PublicationCounter = () => {
   const handlePublicationSelect = (publication) => {
     if (publication === null) {
       // Clear the values if the selected publication is cleared
-      setUnitOfMeasureWeight(0);  // Clear Unit of Measure
-      setTotalWeightOfBatch(0);    // Clear Total Weight of Batch
+      setUnitOfMeasureWeight(0); // Clear Unit of Measure
+      setTotalWeightOfBatch(0); // Clear Total Weight of Batch
     } else if (publication !== previousPublication) {
       // If a different publication is selected, reset the fields
-      setUnitOfMeasureWeight(0);  // Reset Unit of Measure
-      setTotalWeightOfBatch(0);    // Reset Total Weight of Batch
+      setUnitOfMeasureWeight(0); // Reset Unit of Measure
+      setTotalWeightOfBatch(0); // Reset Total Weight of Batch
     }
-    
+
     setPreviousPublication(publication); // Update previousPublication to the new one (or null)
     setSelectedPublication(publication); // Update selectedPublication (or null)
   };
@@ -241,9 +259,10 @@ const PublicationCounter = () => {
           {publicationCount !== null && publicationCount !== "" && (
             <PublicationCountPopover
               open={popoverOpen}
-              onClose={togglePopover}
+              onClose={handlePopoverClose}
               publicationCount={publicationCount}
               onSubmit={handleSubmit}
+              onSaveModifiedCount={handleSaveModifiedCount} // Pass the save handler
             />
           )}
         </Stack>
