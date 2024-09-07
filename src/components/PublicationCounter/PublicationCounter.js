@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./PublicationCounter.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
