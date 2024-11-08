@@ -19,11 +19,7 @@ Name: (cf) "My Follower"
 Edition: Standard
 Name: (cl) Close to Jehovah
 Edition: Standard
-Name: (fy) Family Happiness
-Edition: Standard
 Name: (ia) Imitate
-Edition: Standard
-Name: (jr) Jeremiah
 Edition: Standard
 Name: (jy) Jesus—The Way
 Edition: Standard
@@ -41,6 +37,8 @@ Name: (od) Organized
 Edition: Standard
 Name: (rr) Pure Worship
 Edition: Standard
+Name: (scl) Scriptures for Christian Living
+Edition: Standard
 Name: (sjj) "Sing Out Joyfully"
 Edition: Standard
 Name: (sjjls) "Sing Out Joyfully" (large size)
@@ -55,8 +53,6 @@ Edition: Standard
 Language: English
 Category: Brochures
 Name: (ay) Reading and Writing
-Edition: Standard
-Name: (bm) Bible's Message
 Edition: Standard
 Name: (ed) Education
 Edition: Standard
@@ -80,6 +76,8 @@ Name: (lffi) Enjoy Life Forever! (Brochure)
 Edition: Standard
 Name: (ll) Listen and Live
 Edition: Standard
+Name: (lmd) Love People
+Edition: Standard
 Name: (mb) My Bible Lessons
 Edition: Standard
 Name: (ol) Road to Life
@@ -97,10 +95,6 @@ Edition: Standard
 Name: (th) Teaching
 Edition: Standard
 Name: (wfg) Wisdom From the Gospels
-Edition: Standard
-Name: (wj) Why Worship God
-Edition: Standard
-Name: (yc) Teach Your Children
 Edition: Standard
 Name: (ypq) 10 Questions
 Edition: Standard
