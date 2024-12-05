@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import {
   Box,
@@ -37,6 +37,10 @@ const PublicationCountPopover = ({
 }) => {
   const [isEditing, setIsEditing] = useState(false); // Track edit state
   const [editedCount, setEditedCount] = useState(publicationCount); // Track edited count
+
+  useEffect(() => {
+    setEditedCount(publicationCount); // Ensure `editedCount` reflects the latest `publicationCount`
+  }, [publicationCount]); 
 
   // Handle entering edit state
   const handleEdit = () => {

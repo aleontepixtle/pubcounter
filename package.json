@@ -1,6 +1,6 @@
 {
   "name": "pubcounter",
-  "version": "1.3",
+  "version": "1.4",
   "homepage": "http://aleontepixtle.github.io/pubcounter",
   "private": true,
   "dependencies": {
