@@ -108,37 +108,36 @@ const PublicationCounter = () => {
 
   const handleSubmit = async () => {
     if (selectedPublication) {
-      // Fetch the entire array of publications
-      const publicationsRef = ref(database);
-      const snapshot = await get(publicationsRef);
-      if (snapshot.exists()) {
-        const publicationsArray = snapshot.val();
+      // Reference to the specific publication in the database
+      const publicationRef = ref(
+        database,
+        `publications/${selectedPublication.jwId}`
+      );
 
-        // Find the publication with the matching jwId
-        const publicationIndex = publicationsArray.findIndex(
-          (pub) => pub.jwId === selectedPublication.jwId
-        );
-        if (publicationIndex !== -1) {
-          // Update the quantity field
-          publicationsArray[publicationIndex].quantity = publicationCount;
-          // Save the updated array back to the database
-          try {
-            await set(publicationsRef, publicationsArray);
-            alert("Publication quantity updated successfully!");
-          } catch (error) {
-            alert(
-              "Publication could not be submitted. Please check database WRITE Permission!",
-              error
-            );
-          }
+      try {
+        // Attempt to fetch the specific publication
+        const snapshot = await get(publicationRef);
+
+        if (snapshot.exists()) {
+          // Update only the specific fields for the publication
+          const updatedPublication = {
+            ...snapshot.val(), // Retain existing data
+            quantity: publicationCount, // Update the publication count
+          };
+
+          await set(publicationRef, updatedPublication); // Commit the update to the database
+          alert("Publication quantity updated successfully!");
         } else {
-          alert("Publication not found.");
+          // Handle the case where the publication does not exist
+          alert("The selected publication does not exist in the database.");
         }
-      } else {
-        alert("No data available.");
+      } catch (error) {
+        // Handle database errors (e.g., network issues, permissions)
+        console.error("Error updating publication:", error);
+        alert(
+          "An error occurred while updating the publication. Please try again."
+        );
       }
-
-      togglePopover();
     } else {
       alert("Please select a publication.");
     }
