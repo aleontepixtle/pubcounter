@@ -53,7 +53,7 @@ const PublicationCounter = () => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [selectedPublication, setSelectedPublication] = useState(null);
   const [previousPublication, setPreviousPublication] = useState(null);
-  const [setIsModified] = useState(false); // New state to track if the count was modified
+  const [isModified, setIsModified] = useState(false);
   const [dbCache, setDbCache] = useState(null);
   const [snackbar, setSnackbar] = useState({
     open: false,
