@@ -1,0 +1,55 @@
+{
+  "Publications": {
+    "English": {
+      "Bibles": {
+        "nwt-e": {
+          "name": "New World Translation Study Edition",
+          "edition": "Standard",
+          "quantity": "50",
+          "unitWeight": "256",
+          "coverImageUrl": "https://example.com/bible-cover.jpg",
+          "discontinued": false
+        },
+        "nwtp-e": {
+          "name": "New World Translation Pocket Edition",
+          "edition": "Pocket",
+          "quantity": "10",
+          "unitWeight": "55",
+          "coverImageUrl": "https://example.com/new-testament-cover.jpg",
+          "discontinued": false
+        }
+      },
+      "Books": {
+        "lf-e": {
+          "name": "Enjoy Life Forever",
+          "edition": "Standard",
+          "quantity": "150",
+          "unitWeight": "125",
+          "coverImageUrl": "https://example.com/book-cover.jpg",
+          "discontinued": false
+        }
+      }
+    },
+    "Spanish": {
+      "Bibles": {
+        "nwt-sp": {
+          "name": "New World Translation Study Edition",
+          "edition": "Standard",
+          "quantity": "50",
+          "unitWeight": "256",
+          "coverImageUrl": "https://example.com/bible-cover.jpg",
+          "discontinued": false
+        },
+        "nwtp-e": {
+          "name": "New World Translation Pocket Edition",
+          "edition": "Pocket",
+          "quantity": "10",
+          "unitWeight": "55",
+          "coverImageUrl": "https://example.com/new-testament-cover.jpg",
+          "discontinued": false
+        }
+      },
+      "Books": {}
+    }
+  }
+}
