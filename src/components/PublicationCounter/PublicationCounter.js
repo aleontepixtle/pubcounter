@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./PublicationCounter.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
@@ -22,6 +22,7 @@ import {
   get,
 } from "../PublicationSearch/firebase/firebase";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Snackbar, Alert } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -52,7 +53,27 @@ const PublicationCounter = () => {
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [selectedPublication, setSelectedPublication] = useState(null);
   const [previousPublication, setPreviousPublication] = useState(null);
-  const [isModified, setIsModified] = useState(false); // New state to track if the count was modified
+  const [setIsModified] = useState(false); // New state to track if the count was modified
+  const [dbCache, setDbCache] = useState(null);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "info",
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const snapshot = await get(ref(database));
+        if (snapshot.exists()) {
+          setDbCache(snapshot.val());
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleInputChange = (e) => {
     let { value } = e.target;
@@ -78,7 +99,11 @@ const PublicationCounter = () => {
       !totalWeightOfBatch ||
       !selectedUnitOfMeasureCount
     ) {
-      alert("Please enter valid values for all fields.");
+      setSnackbar({
+        open: true,
+        message: "Please enter valid values for all fields.",
+        severity: "warning",
+      });
       return;
     }
 
@@ -107,39 +132,51 @@ const PublicationCounter = () => {
   };
 
   const handleSubmit = async () => {
-    if (selectedPublication) {
-      // Reference to the specific publication in the database
-      const publicationRef = ref(
-        database,
-        `publications/${selectedPublication.jwId}`
-      );
-
+    if (selectedPublication && dbCache) {
       try {
-        // Attempt to fetch the specific publication
-        const snapshot = await get(publicationRef);
+        const publicationIndex = Object.keys(dbCache).find(
+          (key) => dbCache[key].jwId === selectedPublication.jwId
+        );
 
-        if (snapshot.exists()) {
-          // Update only the specific fields for the publication
+        if (publicationIndex !== undefined) {
           const updatedPublication = {
-            ...snapshot.val(), // Retain existing data
-            quantity: publicationCount, // Update the publication count
+            ...dbCache[publicationIndex],
+            quantity: publicationCount,
           };
 
-          await set(publicationRef, updatedPublication); // Commit the update to the database
-          alert("Publication quantity updated successfully!");
+          await set(ref(database, `${publicationIndex}`), updatedPublication);
+          setSnackbar({
+            open: true,
+            message: "Publication quantity updated successfully!",
+            severity: "success",
+          });
+
+          // Update cache
+          setDbCache({
+            ...dbCache,
+            [publicationIndex]: updatedPublication,
+          });
         } else {
-          // Handle the case where the publication does not exist
-          alert("The selected publication does not exist in the database.");
+          setSnackbar({
+            open: true,
+            message: `Publication with ID ${selectedPublication.jwId} not found`,
+            severity: "error",
+          });
         }
       } catch (error) {
-        // Handle database errors (e.g., network issues, permissions)
         console.error("Error updating publication:", error);
-        alert(
-          "An error occurred while updating the publication. Please try again."
-        );
+        setSnackbar({
+          open: true,
+          message: "Failed to update publication",
+          severity: "error",
+        });
       }
     } else {
-      alert("Please select a publication.");
+      setSnackbar({
+        open: true,
+        message: "Please select a publication",
+        severity: "warning",
+      });
     }
   };
 
@@ -262,10 +299,28 @@ const PublicationCounter = () => {
               publicationCount={publicationCount}
               onSubmit={handleSubmit}
               onSaveModifiedCount={handleSaveModifiedCount} // Pass the save handler
+              keepMounted // Add this to maintain DOM hierarchy
+              disableEnforceFocus // Prevent focus trapping
             />
           )}
         </Stack>
       </Box>
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        sx={{ marginTop: "24px" }}
+        ClickAwayListenerProps={{ mouseEvent: false }} // Prevent focus issues
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </ThemeProvider>
   );
 };
