@@ -142,6 +142,7 @@ const PublicationCounter = () => {
           const updatedPublication = {
             ...dbCache[publicationIndex],
             quantity: publicationCount,
+            unitOfMeasureWeight: unitOfMeasureWeight, // Save the unit of measure weight
           };
 
           await set(ref(database, `${publicationIndex}`), updatedPublication);
