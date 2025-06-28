@@ -8,6 +8,8 @@ import os
 import time
 import pyotp
 from webdriver_manager.chrome import ChromeDriverManager
+from publication_input import load_publication_data, input_publications
+from utils import handle_privacy_banner
 
 # Load environment variables at the top level
 load_dotenv()
@@ -279,17 +281,23 @@ def main():
         handle_privacy_banner(driver)
         print("Entering password...")
         enter_password(driver, JW_PASSWORD)
-        print("Handling 'Stay Logged In' prompt...")
-        handle_stay_logged_in_prompt(driver)
         print("Entering 2FA code...")
         enter_2fa_code(driver, JW_TOTP_SECRET)
+        print("Handling 'Stay Logged In' prompt...")
+        handle_stay_logged_in_prompt(driver)
         print("Navigating to Inventory page...")
         go_to_inventory_page(driver)
         print("Navigating to Inventory Reports...")
         go_to_inventory_reports(driver)
         print("Clicking on Inventory Report for selected language...")
         click_inventory_report_for_language(driver, lang_name)
-        # Continue with inventory actions...
+
+        print(f"Starting Publication input for language: {lang_name}")
+        time.sleep(5)
+        
+        print("\n\nLooking for publication in JSON file for language:", lang_name) 
+        publications_data = load_publication_data(lang_name)
+        input_publications(driver, publications_data, lang_name)
         time.sleep(5)
     finally:
         driver.quit()
