@@ -167,8 +167,9 @@ def click_inventory_report_for_language(driver, language):
     if language not in found_langs:
         raise Exception(f"Selected language '{language}' is missing from the page. Please add it or check your languages.txt.")
 
-    print(f"[DEBUG] Found links on page: {found}")
-    print(f"[DEBUG] Number of expected languages found: {len(found_langs)}/{len(expected_languages)}")
+    # Debugging output, uncomment to see which languages were found vs expected from languages.txt
+    #print(f"[DEBUG] Found links on page: {found}")
+    #print(f"[DEBUG] Number of expected languages found: {len(found_langs)}/{len(expected_languages)}")
 
     # Now, find and click the correct language link
     headers = driver.find_elements(By.CSS_SELECTOR, "h2.card__header-text > a.card__header-link")
@@ -253,54 +254,75 @@ def resolve_language(language_arg, code_to_name, name_to_code):
     return None, None
 
 def main():
-    print(f"################### JW Inventory Automation Script ###################")
+    print(f"\n\n\n##################################################")
+    print(f"######### JW Inventory Automation Script #########")
+    print(f"##################################################\n")
     code_to_name, name_to_code = load_languages()
 
-    # Use CLI flag or prompt
-    parser = argparse.ArgumentParser(description="JW Inventory Automation")
-    parser.add_argument("--language", "-l", help="Language code or full name (e.g., en, English)")
-    args = parser.parse_args()
+    while True:
+        # Use CLI flag or prompt
+        parser = argparse.ArgumentParser(description="JW Inventory Automation")
+        parser.add_argument("--language", "-l", help="Language code or full name (e.g., en, English)")
+        args, unknown = parser.parse_known_args()
 
-    lang_code, lang_name = resolve_language(args.language, code_to_name, name_to_code)
-    if not lang_code:
-        lang_code, lang_name = select_language_interactively(code_to_name)
+        lang_code, lang_name = resolve_language(args.language, code_to_name, name_to_code)
+        if not lang_code:
+            lang_code, lang_name = select_language_interactively(code_to_name)
 
-    print(f"###################################################################################")
-    print(f"Selected language: {lang_name} ({lang_code})")
-    print(f"###################################################################################")
+        print(f"###################################################################################")
+        print(f"Selected language: {lang_name} ({lang_code})")
+        print(f"###################################################################################")
 
-    driver = setup_driver()
-    try:
-        print("\nNavigating to JW Login page...\n")
-        # Use lang_code for URL, lang_name for UI selection
-        url = f"https://login.jw.org/username?PostLoginUri=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dhub.jw.org%252Fhome%26redirect_uri%3Dhttps%253A%252F%252Fhub.jw.org%252Fhome%252Fsignin-oidc%26response_type%3Did_token%26scope%3Dopenid%2520profile%26response_mode%3Dform_post%26nonce%3D638833780679689374.NTI4NjM5M2EtNTFiNC00YjBhLWE5NjYtZDQ0MjUyM2JiODQ2MDNmNzg4NjItMzcwMi00OWU3LWEzMTItYThiNTVjNTEyY2Yw%26client-request-id%3D3b9b2b8f-05ed-4e3e-967e-d1d3b6ca5567%26original_params%3D%253FpostLoginUri%253D%25252Fen%26state%3DCfDJ8IIUqNGiUidGnmYicll1Oc8Nm3K86FVChNW8-pxPxDwub7VH6HIPKFPfbbGtADss0rnJsvZtqXICHOO51nPe15_7Z8W_coeGnvBtf0EMuBRaZ69KXUSPLd7EuNkAybQD8WaOsxk6NHft9L4r6A2HoMIs-vouhWpIuc2jMvtbx3UAv20qpGKKYTCajlPbKWgrFdP3cNuBonmip4supA4eSBuJmhjpfFAuAxQ9i4_RDhrR1xjglXIOOyKvrGqTS0GRi3_2Kb1GHNYvtUy8-Fg5SMqRl6zf7CwaVrVCwvBy1-ueOxjnV8iPqLNH06fJaMDLk3cvmNzJMCQyt_P1-aJhU8_pJYQCComk3UE-JiyvLCK2GOv3U7yhvvZEDCFcei_fhNNtnNW5BmoqWG4EWA3nLSfn20NOCXWSW_1BW3wAXfelkINvcx_0VoQL-pJnQAHfzBJWIoPMlTsjGE4K9i2k-HQZOEXDFubqUnjTB2UYrt1n8UXFX5aMGcJa8njGA_iewvVFQPwdFoEbD6livtnPnNOTuHcXlTCXIcFXQH_GPPGl%26x-client-SKU%3DID_NET9_0%26x-client-ver%3D8.7.0.0"
-        navigate_to_website(driver, url)
-        print("Entering username...")
-        enter_username(driver, JW_USERNAME)
-        print("Handling privacy banner...")
-        handle_privacy_banner(driver)
-        print("Entering password...")
-        enter_password(driver, JW_PASSWORD)
-        print("Entering 2FA code...")
-        enter_2fa_code(driver, JW_TOTP_SECRET)
-        print("Handling 'Stay Logged In' prompt...")
-        handle_stay_logged_in_prompt(driver)
-        print("Navigating to Inventory page...")
-        go_to_inventory_page(driver)
-        print("Navigating to Inventory Reports...")
-        go_to_inventory_reports(driver)
-        print("Clicking on Inventory Report for selected language...")
-        click_inventory_report_for_language(driver, lang_name)
+        # Prompt user to continue, return to language selection, or quit
+        user_input = input("Press Enter to continue, 'l' to select language, or 'q' to quit: ").strip().lower()
+        if user_input == 'q':
+            print("Quitting script.")
+            break
+        if user_input == 'l':
+            continue  # Restart language selection
 
-        print(f"Starting Publication input for language: {lang_name}")
-        time.sleep(5)
-        
-        print("\n\nLooking for publication in JSON file for language:", lang_name) 
-        publications_data = load_publication_data(lang_name)
-        input_publications(driver, publications_data, lang_name)
-        time.sleep(5)
-    finally:
-        driver.quit()
+        driver = setup_driver()
+        try:
+            print("\nNavigating to JW Login page...\n")
+            url = f"https://login.jw.org/username?PostLoginUri=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dhub.jw.org%252Fhome%26redirect_uri%3Dhttps%253A%252F%252Fhub.jw.org%252Fhome%252Fsignin-oidc%26response_type%3Did_token%26scope%3Dopenid%2520profile%26response_mode%3Dform_post%26nonce%3D638833780679689374.NTI4NjM5M2EtNTFiNC00YjBhLWE5NjYtZDQ0MjUyM2JiODQ2MDNmNzg4NjItMzcwMi00OWU3LWEzMTItYThiNTVjNTEyY2Yw%26client-request-id%3D3b9b2b8f-05ed-4e3e-967e-d1d3b6ca5567%26original_params%3D%253FpostLoginUri%253D%25252Fen%26state%3DCfDJ8IIUqNGiUidGnmYicll1Oc8Nm3K86FVChNW8-pxPxDwub7VH6HIPKFPfbbGtADss0rnJsvZtqXICHOO51nPe15_7Z8W_coeGnvBtf0EMuBRaZ69KXUSPLd7EuNkAybQD8WaOsxk6NHft9L4r6A2HoMIs-vouhWpIuc2jMvtbx3UAv20qpGKKYTCajlPbKWgrFdP3cNuBonmip4supA4eSBuJmhjpfFAuAxQ9i4_RDhrR1xjglXIOOyKvrGqTS0GRi3_2Kb1GHNYvtUy8-Fg5SMqRl6zf7CwaVrVCwvBy1-ueOxjnV8iPqLNH06fJaMDLk3cvmNzJMCQyt_P1-aJhU8_pJYQCComk3UE-JiyvLCK2GOv3U7yhvvZEDCFcei_fhNNtnNW5BmoqWG4EWA3nLSfn20NOCXWSW_1BW3wAXfelkINvcx_0VoQL-pJnQAHfzBJWIoPMlTsjGE4K9i2k-HQZOEXDFubqUnjTB2UYrt1n8UXFX5aMGcJa8njGA_iewvVFQPwdFoEbD6livtnPnNOTuHcXlTCXIcFXQH_GPPGl%26x-client-SKU%3DID_NET9_0%26x-client-ver%3D8.7.0.0"
+            navigate_to_website(driver, url)
+            print("Entering username...")
+            enter_username(driver, JW_USERNAME)
+            print("Handling privacy banner...")
+            handle_privacy_banner(driver)
+            print("Entering password...")
+            enter_password(driver, JW_PASSWORD)
+            print("Entering 2FA code...")
+            enter_2fa_code(driver, JW_TOTP_SECRET)
+            print("Handling 'Stay Logged In' prompt...")
+            handle_stay_logged_in_prompt(driver)
+            print("Navigating to Inventory page...")
+            go_to_inventory_page(driver)
+            print("Navigating to Inventory Reports...")
+            go_to_inventory_reports(driver)
+            print("Clicking on Inventory Report for selected language...")
+            click_inventory_report_for_language(driver, lang_name)
+
+            print(f"Starting Publication input for language: {lang_name}")
+            time.sleep(5)
+            
+            print("\n\nLooking for publication in JSON file for language:", lang_name) 
+            publications_data = load_publication_data(lang_name)
+            input_publications(driver, publications_data, lang_name)
+            print(f"\n\n======= Finished inputting publications for language: {lang_name} =======")
+            print("Waiting for 3 seconds before closing the browser...")
+            time.sleep(3)
+        except KeyboardInterrupt:
+            print("\n[INFO] Script interrupted by user. Exiting gracefully.")
+        finally:
+            driver.quit()
+        # After finishing, ask if the user wants to select another language or quit
+        post_input = input("\nPress Enter to quit, or 'l' to select another language: ").strip().lower()
+        if post_input == 'l':
+            continue
+        else:
+            print("Quitting script.")
+            break
 
 if __name__ == "__main__":
     main()

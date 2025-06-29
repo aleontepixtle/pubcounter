@@ -1,4 +1,5 @@
 en,English
+es,Spanish
 ar,Arabic
 bn,Bengali
 ceb,Cebuano

@@ -69,6 +69,7 @@ def input_publications(driver, publication_data, language):
 
         found_count = 0
         not_found = []
+        successfully_submitted = set()  # Track successfully submitted publications
 
         # Privacy Banner Check again right before clicking category
         try:
@@ -92,19 +93,33 @@ def input_publications(driver, publication_data, language):
             qty = pub.get("quantity")
             normalized_name = normalize_text(name)
             normalized_jwid = normalize_id(jwid)
+            
             try:
                 buttons = driver.find_elements(By.XPATH, "//button[contains(@class, 'button--link')]")
                 found = False
-                for btn in buttons:
-                    btn_text = normalize_text(btn.text)
-                    print(f"    [DEBUG] Button text: '{btn.text}' (normalized: '{btn_text}')")
-                    print(f"    [DEBUG] Looking for name: '{normalized_name}' and jwid: '{normalized_jwid}'")
-                    # Use AND logic: both name and jwId must be present in the button text
-                    if normalized_name in btn_text and (normalized_jwid and normalized_jwid in btn_text):
-                        btn.click()
-                        print(f"  Clicked: {name} (jwId: {jwid})")
-                        found = True
-                        break
+
+                # Special handling for "Others - Category" publications
+                if normalized_name.startswith("others "):
+                    print(f"    [DEBUG] Processing Others publication: {name}")
+                    for btn in buttons:
+                        btn_text = normalize_text(btn.text)
+                       # print(f"    [DEBUG] Button text: '{btn.text}' (normalized: '{btn_text}')")
+                        if btn_text.strip() == "others":
+                            btn.click()
+                            print(f"  Clicked: {name} (jwId: {jwid}) [OTHERS SPECIAL CASE]")
+                            found = True
+                            break
+                else:
+                    for btn in buttons:
+                        btn_text = normalize_text(btn.text)
+                        #print(f"    [DEBUG] Button text: '{btn.text}' (normalized: '{btn_text}')")
+                        print(f"    [DEBUG] Looking for name: '{normalized_name}' and jwid: '{normalized_jwid}'")
+                        if normalized_name in btn_text and (normalized_jwid and normalized_jwid in btn_text):
+                            btn.click()
+                            print(f"  Clicked: {name} (jwId: {jwid})")
+                            found = True
+                            break
+
                 if not found:
                     raise Exception("Button not found")
 
@@ -168,6 +183,23 @@ def input_publications(driver, publication_data, language):
                             return False
                     if WebDriverWait(driver, 5).until(card_quantity_updated):
                         print(f"[VERIFY] Card quantity for '{name}' (jwId: {jwid}) correctly set to '{qty}'")
+                        successfully_submitted.add(jwid)  # Track successful submission
+                        
+                        # Wait for checkbox to be marked as done
+                        def checkbox_marked_done(driver):
+                            try:
+                                # Look for the switch component instead of just the checkbox
+                                switch = card_elem.find_element(By.XPATH, ".//label[contains(@class, 'switch')]")
+                                # Check if it has the active class (indicating it's checked/done)
+                                return "switch--active" in switch.get_attribute("class")
+                            except Exception:
+                                return False
+                        
+                        try:
+                            WebDriverWait(driver, 3).until(checkbox_marked_done)
+                            print(f"[VERIFY] Checkbox for '{name}' (jwId: {jwid}) marked as done")
+                        except Exception:
+                            print(f"[WARNING] Checkbox for '{name}' (jwId: {jwid}) may not be marked as done yet")
                     else:
                         qty_elem = card_elem.find_element(By.XPATH, ".//p[contains(@class, 'ng-star-inserted')]")
                         card_qty = qty_elem.text.strip()
@@ -181,40 +213,69 @@ def input_publications(driver, publication_data, language):
                 print(f"  Not found or failed to submit: {name} (jwId: {jwid})")
                 not_found.append(f"{name} (jwId: {jwid})")
 
+        # Wait a bit for all UI updates to complete before checking for unchecked items
+        print("Waiting for UI to update checkbox states...")
+        time.sleep(2)
+        
         # --- Final check for unchecked checkboxes, retry only once ---
         try:
-            checkboxes = driver.find_elements(By.XPATH, "//input[@type='checkbox' and not(@checked)]")
-            if checkboxes:
+            # Look for unchecked switch components instead of standard checkboxes
+            unchecked_switches = driver.find_elements(By.XPATH, "//label[contains(@class, 'switch') and contains(@class, 'switch--inactive')]")
+            
+            # Filter switches to only include those within publication cards
+            publication_checkboxes = []
+            for switch in unchecked_switches:
+                try:
+                    # Check if this switch is within a publication card
+                    card_elem = switch.find_element(By.XPATH, "ancestor::article[contains(@class, 'card')]")
+                    btn_elem = card_elem.find_element(By.XPATH, ".//button[contains(@class, 'button--link')]")
+                    label = btn_elem.text.strip()
+                    
+                    # Only include if we can get a valid label
+                    if label and label != "(label not found)":
+                        publication_checkboxes.append((switch, card_elem, btn_elem, label))
+                except Exception:
+                    # Skip switches that aren't in publication cards or don't have labels
+                    continue
+            
+            if publication_checkboxes:
                 print("-" * 60)
                 print(f"[RETRY] The following publications in '{ui_category}' were not checked as done:")
-                for cb in checkboxes:
-                    # Try to get the publication label from the card context
-                    try:
-                        card_elem = cb.find_element(By.XPATH, "ancestor::article[contains(@class, 'card')]")
-                        btn_elem = card_elem.find_element(By.XPATH, ".//button[contains(@class, 'button--link')]")
-                        label = btn_elem.text.strip()
-                    except Exception:
-                        label = "(label not found)"
+                for cb, card_elem, btn_elem, label in publication_checkboxes:
+                    print(f"    - {label}")
+
+                for cb, card_elem, btn_elem, label in publication_checkboxes:
                     print(f"    - {label}")
 
                     matched_pub = None
+                    already_submitted = False
+                    
                     for pub in pubs:
                         pub_name_norm = normalize_text(pub.get("name"))
                         pub_jwid_norm = normalize_id(pub.get("jwId"))
+                        pub_jwid = pub.get("jwId")
                         label_norm = normalize_text(label)
 
-                        # Special handling for "Others - Category" publications
-                        if pub_name_norm.startswith("others -"):
-                            # Only match if label is exactly "others"
+                        # Check if this publication matches the label
+                        is_match = False
+                        if pub_name_norm.startswith("others "):
+                            # Special handling for "Others - Category" publications
                             if label_norm.strip() == "others":
-                                matched_pub = pub
-                                break
+                                is_match = True
                         else:
                             # Normal AND logic for all other publications
                             if pub_name_norm in label_norm and (pub_jwid_norm and pub_jwid_norm in label_norm):
-                                matched_pub = pub
-                                break
-                    if matched_pub and label not in retried_labels:
+                                is_match = True
+                        
+                        if is_match:
+                            matched_pub = pub
+                            # Check if already successfully submitted
+                            if pub_jwid in successfully_submitted:
+                                print(f"      Skipping {pub.get('name')} (jwId: {pub_jwid}) - already successfully submitted")
+                                already_submitted = True
+                            break
+                    
+                    if matched_pub and not already_submitted and label not in retried_labels:
                         # --- Check if card quantity is already correct before retrying ---
                         try:
                             qty_elem = card_elem.find_element(By.XPATH, ".//p[contains(@class, 'ng-star-inserted')]")
@@ -222,6 +283,7 @@ def input_publications(driver, publication_data, language):
                             if str(card_qty) == str(matched_pub.get("quantity")):
                                 print(f"[INFO] Card quantity for '{matched_pub.get('name')}' (jwId: {matched_pub.get('jwId')}) already matches expected value '{card_qty}'. Skipping retry.")
                                 retried_labels.add(label)
+                                successfully_submitted.add(matched_pub.get('jwId'))  # Mark as successfully submitted
                                 continue  # Don't retry if already correct
                         except Exception as e:
                             print(f"[WARNING] Could not verify card quantity before retry for '{matched_pub.get('name')}' (jwId: {matched_pub.get('jwId')}): {e}")
@@ -235,13 +297,27 @@ def input_publications(driver, publication_data, language):
                             normalized_name = normalize_text(matched_pub.get("name"))
                             jwid = matched_pub.get("jwId")
                             qty = matched_pub.get("quantity")
-                            for btn in buttons:
-                                btn_text = normalize_text(btn.text)
-                                if normalized_name in btn_text and (jwid and jwid.lower() in btn_text):
-                                    btn.click()
-                                    print(f"  [RETRY] Clicked: {matched_pub.get('name')} (jwId: {jwid})")
-                                    found = True
-                                    break
+                            
+                            # Special handling for "Others - Category" publications in retry
+                            if normalized_name.startswith("others "):
+                                for btn in buttons:
+                                    btn_text = normalize_text(btn.text)
+                                    if btn_text.strip() == "others":
+                                        btn.click()
+                                        print(f"  [RETRY] Clicked: {matched_pub.get('name')} (jwId: {jwid}) [OTHERS SPECIAL CASE]")
+                                        found = True
+                                        break
+                            else:
+                                for btn in buttons:
+                                    btn_text = normalize_text(btn.text)
+                                    normalized_jwid = normalize_id(jwid)
+                                    # Use AND logic: both name and jwId must be present in the button text
+                                    if normalized_name in btn_text and (normalized_jwid and normalized_jwid in btn_text):
+                                        btn.click()
+                                        print(f"  [RETRY] Clicked: {matched_pub.get('name')} (jwId: {jwid})")
+                                        found = True
+                                        break
+                            
                             if found:
                                 WebDriverWait(driver, 5).until(
                                     EC.visibility_of_element_located((
@@ -282,10 +358,15 @@ def input_publications(driver, publication_data, language):
                                         time.sleep(1)
                                 except Exception:
                                     pass
+                                
+                                # Mark as successfully submitted after retry
+                                successfully_submitted.add(matched_pub.get('jwId'))
+                                
                         except Exception as e:
                             print(f"      [RETRY] Failed to resubmit: {matched_pub.get('name')} (jwId: {matched_pub.get('jwId')}) - {e}")
                     elif not matched_pub:
                         print(f"      No matching publication data found for: {label}")
+                    # Note: If matched_pub exists but already_submitted is True, we don't print anything additional
                 print("-" * 60)
         except Exception:
             pass
