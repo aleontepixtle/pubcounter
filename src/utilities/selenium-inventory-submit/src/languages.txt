@@ -1,4 +1,5 @@
 en,English
+es,Spanish
 ar,Arabic
 bn,Bengali
 ceb,Cebuano
@@ -18,7 +19,6 @@ ko,Korean
 ml,Malayalam
 my,Myanmar
 pl,Polish
-pt,Portuguese
 ro,Romanian
 ru,Russian
 si,Sinhala

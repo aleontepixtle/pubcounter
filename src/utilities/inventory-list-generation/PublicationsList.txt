@@ -4,8 +4,6 @@ Name: (nwt) New World Translation
 Edition: Standard
 Name: (nwtpkt) New World Translation (pocket-size)
 Edition: Pocket-Sized
-Name: (nwsty) New World Translation (Gospels)
-Edition: Study Bible
 
 Language: English
 Category: Books
