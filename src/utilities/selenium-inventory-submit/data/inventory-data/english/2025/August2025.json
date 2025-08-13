@@ -1,0 +1,860 @@
+[
+  {
+    "category": "Bibles",
+    "edition": "Standard",
+    "jwId": "nwt",
+    "language": "English",
+    "name": "New World Translation",
+    "quantity": "20",
+    "unitOfMeasureWeight": 566,
+    "unitWeight": 1
+  },
+  {
+    "category": "Bibles",
+    "edition": "Pocket-Sized",
+    "jwId": "nwtpkt",
+    "language": "English",
+    "name": "New World Translation (pocket-size)",
+    "quantity": "11",
+    "unitOfMeasureWeight": 366,
+    "unitWeight": 1
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "be",
+    "language": "English",
+    "name": "Ministry School",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "bhs",
+    "language": "English",
+    "name": "Teach Us",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "bt",
+    "language": "English",
+    "name": "Bearing Witness",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "bt",
+    "language": "English",
+    "name": "Bearing Witness",
+    "quantity": "68",
+    "unitOfMeasureWeight": 270,
+    "unitWeight": 1
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "cl",
+    "language": "English",
+    "name": "Close to Jehovah",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "ia",
+    "language": "English",
+    "name": "Imitate",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "jy",
+    "language": "English",
+    "name": "Jesus—The Way",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "jy",
+    "language": "English",
+    "name": "Jesus—The Way",
+    "quantity": "4",
+    "unitOfMeasureWeight": 380,
+    "unitWeight": 1
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "kr",
+    "language": "English",
+    "name": "God's Kingdom Rules!",
+    "quantity": "4",
+    "unitOfMeasureWeight": 288,
+    "unitWeight": 1
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "lff",
+    "language": "English",
+    "name": "Enjoy Life Forever! (Book)",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "lff",
+    "language": "English",
+    "name": "Enjoy Life Forever! (Book)",
+    "quantity": "51",
+    "unitOfMeasureWeight": 328,
+    "unitWeight": 1
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "lvs",
+    "language": "English",
+    "name": "Remain in God's Love",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "lvs",
+    "language": "English",
+    "name": "Remain in God's Love",
+    "quantity": "33",
+    "unitOfMeasureWeight": 132,
+    "unitWeight": 1
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "rr",
+    "language": "English",
+    "name": "Pure Worship",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "rr",
+    "language": "English",
+    "name": "Pure Worship",
+    "quantity": 1,
+    "unitOfMeasureWeight": 298,
+    "unitWeight": 1
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "sjj",
+    "language": "English",
+    "name": "Sing Out Joyfully",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "sjj",
+    "language": "English",
+    "name": "Sing Out Joyfully",
+    "quantity": "11",
+    "unitOfMeasureWeight": 228,
+    "unitWeight": 1
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "sjjyls",
+    "language": "English",
+    "name": "Sing Out Joyfully—Lyrics Only",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "yp1",
+    "language": "English",
+    "name": "Young People Ask, Volume 1",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Books",
+    "edition": "Standard",
+    "jwId": "yp1",
+    "language": "English",
+    "name": "Young People Ask, Volume 1",
+    "quantity": "4",
+    "unitOfMeasureWeight": 196,
+    "unitWeight": 1
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "ay",
+    "language": "English",
+    "name": "Reading and Writing",
+    "quantity": 1,
+    "unitWeight": 108
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "ed",
+    "language": "English",
+    "name": "Education",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "fg",
+    "language": "English",
+    "name": "Good News",
+    "quantity": 151,
+    "unitWeight": 38
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "hf",
+    "language": "English",
+    "name": "Happy Family",
+    "quantity": 10,
+    "unitWeight": 46
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "hl",
+    "language": "English",
+    "name": "Happy Life",
+    "quantity": 22,
+    "unitWeight": 46
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "jl",
+    "language": "English",
+    "name": "Jehovah's Will",
+    "quantity": 44,
+    "unitWeight": 44
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "la",
+    "language": "English",
+    "name": "Satisfying Life",
+    "quantity": 29,
+    "unitWeight": 36
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "lc",
+    "language": "English",
+    "name": "Was Life Created?",
+    "quantity": 7,
+    "unitWeight": 52
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "ld",
+    "language": "English",
+    "name": "Listen to God",
+    "quantity": 45,
+    "unitWeight": 36
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "lf",
+    "language": "English",
+    "name": "Origin of Life",
+    "quantity": 45,
+    "unitWeight": 52
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "lffi",
+    "language": "English",
+    "name": "Enjoy Life Forever! (Brochure)",
+    "quantity": 348,
+    "unitWeight": 21.2
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "lffi",
+    "language": "English",
+    "name": "Enjoy Life Forever! (Brochure)",
+    "quantity": "3",
+    "unitOfMeasureWeight": 110,
+    "unitWeight": 1
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "lmd",
+    "language": "English",
+    "name": "Love People",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "mb",
+    "language": "English",
+    "name": "My Bible Lessons",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "ol",
+    "language": "English",
+    "name": "Road to Life",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "pc",
+    "language": "English",
+    "name": "Lasting Peace",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "ph",
+    "language": "English",
+    "name": "Pathway",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "rj",
+    "language": "English",
+    "name": "Return to Jehovah",
+    "quantity": 8,
+    "unitWeight": 48
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "rk",
+    "language": "English",
+    "name": "Real Faith",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "sp",
+    "language": "English",
+    "name": "Spirits of the Dead",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "th",
+    "language": "English",
+    "name": "Teaching",
+    "quantity": 10,
+    "unitWeight": 54
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "wfg",
+    "language": "English",
+    "name": "Wisdom From the Gospels",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Brochures",
+    "edition": "Standard",
+    "jwId": "ypq",
+    "language": "English",
+    "name": "10 Questions",
+    "quantity": 4,
+    "unitWeight": 44
+  },
+  {
+    "category": "Forms & Supplies",
+    "edition": "Standard",
+    "jwId": "jwcd1",
+    "language": "English",
+    "name": "Contact card for jw.org",
+    "quantity": 494,
+    "unitWeight": 1.4
+  },
+  {
+    "category": "Forms & Supplies",
+    "edition": "Standard",
+    "jwId": "jwcd4",
+    "language": "English",
+    "name": "Contact card for jw.org",
+    "quantity": 573,
+    "unitWeight": 1.2
+  },
+  {
+    "category": "Forms & Supplies",
+    "edition": "Standard",
+    "jwId": "jwcd9",
+    "language": "English",
+    "name": "Contact card for free Bible course",
+    "quantity": 575,
+    "unitWeight": 1.2
+  },
+  {
+    "category": "Forms & Supplies",
+    "edition": "Standard",
+    "jwId": "jwcd10",
+    "language": "English",
+    "name": "Contact card for free Bible course",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Forms & Supplies",
+    "edition": "Standard",
+    "jwId": "S-4",
+    "language": "English",
+    "name": "Field Service Report",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Forms & Supplies",
+    "edition": "Standard",
+    "jwId": "S-8",
+    "language": "English",
+    "name": "House-to-House Record",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Forms & Supplies",
+    "edition": "Standard",
+    "jwId": "S-8",
+    "language": "English",
+    "name": "House-to-House Record",
+    "quantity": "1000",
+    "unitWeight": 1
+  },
+  {
+    "category": "Forms & Supplies",
+    "edition": "Standard",
+    "jwId": "S-24",
+    "language": "English",
+    "name": "Transaction Record",
+    "quantity": "5",
+    "unitWeight": 1
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-30",
+    "language": "English",
+    "name": "View the Bible",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-30",
+    "language": "English",
+    "name": "View the Bible",
+    "quantity": 594,
+    "unitOfMeasureWeight": 24,
+    "unitWeight": 2.8
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-31",
+    "language": "English",
+    "name": "View the Future",
+    "quantity": 559,
+    "unitOfMeasureWeight": 24,
+    "unitWeight": 2.8
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-32",
+    "language": "English",
+    "name": "Happy Family Life",
+    "quantity": 571,
+    "unitOfMeasureWeight": 24,
+    "unitWeight": 2.8
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-33",
+    "language": "English",
+    "name": "Who Controls the World?",
+    "quantity": 474,
+    "unitOfMeasureWeight": 24,
+    "unitWeight": 2.8
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-34",
+    "language": "English",
+    "name": "Will Suffering End?",
+    "quantity": 723,
+    "unitOfMeasureWeight": 24,
+    "unitWeight": 2.8
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-35",
+    "language": "English",
+    "name": "Live Again",
+    "quantity": 731,
+    "unitOfMeasureWeight": 10,
+    "unitWeight": 3
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-36",
+    "language": "English",
+    "name": "Kingdom",
+    "quantity": 299,
+    "unitOfMeasureWeight": 10,
+    "unitWeight": 2.8
+  },
+  {
+    "category": "Tracts",
+    "edition": "Standard",
+    "jwId": "T-37",
+    "language": "English",
+    "name": "Website tract",
+    "quantity": 907,
+    "unitWeight": 2.8
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g18.2",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 21,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g18.3",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g18.3",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 271,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g19.2",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g19.2",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 52,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g19.3",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 13,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g20.1",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 34,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g20.3",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g21.1",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 66,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g21.2",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g21.2",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 71,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g22.1",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g22.1",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 363,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 19.6
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "g23.1",
+    "language": "English",
+    "name": "Awake!",
+    "quantity": 376,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp18.1",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp18.2",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp18.3",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp18.3",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 35,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp19.1",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 344,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp19.2",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 28,
+    "unitWeight": 21.6
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp20.1",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 219,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp20.2",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp20.2",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 425,
+    "unitOfMeasureWeight": 22,
+    "unitWeight": 22
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp21.1",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp21.2",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 74,
+    "unitWeight": 18
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp21.3",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 72,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp22.1",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 50,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp23.1",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 0,
+    "unitWeight": 0
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp23.1",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 41,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18.4
+  },
+  {
+    "category": "Public Magazines",
+    "edition": "Standard",
+    "jwId": "wp24.1",
+    "language": "English",
+    "name": "Watchtower (Public)",
+    "quantity": 292,
+    "unitOfMeasureWeight": 18,
+    "unitWeight": 18.4
+  }
+]
