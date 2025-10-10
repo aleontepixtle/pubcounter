@@ -4,6 +4,8 @@ Name: (nwt) New World Translation
 Edition: Standard
 Name: (nwtpkt) New World Translation (pocket-size)
 Edition: Pocket-Sized
+Name: (Bibles) Others
+Edition: Standard
 
 Language: English
 Category: Books
@@ -46,6 +48,8 @@ Edition: Standard
 Name: (yp1) Young People Ask, Volume 1
 Edition: Standard
 Name: (yp2) Young People Ask, Volume 2
+Edition: Standard
+Name: (Books) Other
 Edition: Standard
 
 Language: English
@@ -96,6 +100,8 @@ Name: (wfg) Wisdom From the Gospels
 Edition: Standard
 Name: (ypq) 10 Questions
 Edition: Standard
+Name: (Brochures) Others
+Edition: Standard
 
 Language: English
 Category: Forms & Supplies
@@ -106,6 +112,7 @@ Name: (jwcd10) Contact card for free Bible course
 Name: (S-4) Field Service Report
 Name: (S-8) House-to-House Record
 Name: (S-24) Transaction Record
+
 
 Language: English
 Category: Tracts
@@ -118,6 +125,7 @@ Name: (T-34) Will Suffering End?
 Name: (T-35) Live Again
 Name: (T-36) Kingdom
 Name: (T-37) Website tract
+Name: (Tracts) Others
 
 Language: English
 Category: Public Magazines
@@ -151,3 +159,4 @@ Name: (wp21.3) Watchtower (Public)
 Name: (wp22.1) Watchtower (Public)
 Name: (wp23.1) Watchtower (Public)
 Name: (wp24.1) Watchtower (Public)
+Name: (Magazines) Others
