@@ -1,0 +1,31 @@
+en,English
+es,Spanish
+ar,Arabic
+bn,Bengali
+ceb,Cebuano
+zh-CN,Chinese Mandarin (Simplified)
+zh-TW,Chinese Mandarin (Traditional)
+hr,Croatian
+ka,Georgian
+gu,Gujarati
+hil,Hiligaynon
+hi,Hindi
+ilo,Iloko
+id,Indonesian
+it,Italian
+ja,Japanese
+jv,Javanese
+ko,Korean
+ml,Malayalam
+my,Myanmar
+pl,Polish
+ro,Romanian
+ru,Russian
+si,Sinhala
+tl,Tagalog
+ta,Tamil
+th,Thai
+tr,Turkish
+uk,Ukrainian
+ur,Urdu
+vi,Vietnamese
