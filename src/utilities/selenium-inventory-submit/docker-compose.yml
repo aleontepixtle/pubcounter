@@ -1,0 +1,31 @@
+services:
+  selenium-automation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: selenium-inventory-submit
+    env_file:
+      - .env
+    volumes:
+      # Mount data directory if you need to persist or update data
+      - ./data:/app/data
+      # Optionally mount logs directory
+      # - ./logs:/app/logs
+    shm_size: '2gb'  # Increase shared memory for Chrome
+
+    # Default command: Run with non-interactive mode
+    command: python src/main.py --non-interactive
+
+    # Language selection options (choose one method):
+    #
+    # Method 1: Set LANGUAGE in .env file (recommended)
+    #   Just add LANGUAGE=en (or any language code) to your .env file
+    #
+    # Method 2: Pass language via command line
+    #   Uncomment and modify one of these:
+    #   command: python src/main.py --non-interactive --language en
+    #   command: python src/main.py --non-interactive --language Spanish
+    #
+    # Method 3: Interactive mode (not recommended for Docker)
+    #   Remove --non-interactive flag to enable prompts
+    #   command: python src/main.py

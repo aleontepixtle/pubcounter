@@ -49,7 +49,7 @@ Name: (yp1) Young People Ask, Volume 1
 Edition: Standard
 Name: (yp2) Young People Ask, Volume 2
 Edition: Standard
-Name: (Books) Other
+Name: (Books) Others
 Edition: Standard
 
 Language: English

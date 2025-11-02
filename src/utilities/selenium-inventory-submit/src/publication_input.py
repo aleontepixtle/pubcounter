@@ -82,7 +82,7 @@ def input_publications(driver, publication_data, language):
 
         if not click_category(driver, ui_category):
             print(f"[ERROR] Could not find category '{ui_category}' on the page.")
-            all_not_found.extend([f"{pub.get('name')} (jwId: {pub.get('jwId')})" for pub in pubs])
+            all_not_found.extend([f"[{ui_category}] {pub.get('name')} (jwId: {pub.get('jwId')})" for pub in pubs])
             continue
 
         retried_labels = set()  # Track which labels have been retried
@@ -98,15 +98,17 @@ def input_publications(driver, publication_data, language):
                 buttons = driver.find_elements(By.XPATH, "//button[contains(@class, 'button--link')]")
                 found = False
 
-                # Special handling for "Others - Category" publications
-                if normalized_name.startswith("others "):
-                    print(f"    [DEBUG] Processing Others publication: {name}")
+                # Special handling for "Others" publications
+                # Skip jwId check since it doesn't exist in DOM for "Others" publications
+                if normalized_name == "others" or normalized_name.startswith("others "):
+                    print(f"    [DEBUG] Processing Others publication: {name} - jwId check will be SKIPPED")
                     for btn in buttons:
                         btn_text = normalize_text(btn.text)
-                       # print(f"    [DEBUG] Button text: '{btn.text}' (normalized: '{btn_text}')")
-                        if btn_text.strip() == "others":
+                        print(f"    [DEBUG] Button text: '{btn.text}' (normalized: '{btn_text}')")
+                        # Match if button text is exactly "others" (jwId is not checked)
+                        if btn_text == "others":
                             btn.click()
-                            print(f"  Clicked: {name} (jwId: {jwid}) [OTHERS SPECIAL CASE]")
+                            print(f"  Clicked: {name} (jwId: {jwid}) [OTHERS SPECIAL CASE - jwId not verified in DOM]")
                             found = True
                             break
                 else:
@@ -211,7 +213,7 @@ def input_publications(driver, publication_data, language):
 
             except Exception as e:
                 print(f"  Not found or failed to submit: {name} (jwId: {jwid})")
-                not_found.append(f"{name} (jwId: {jwid})")
+                not_found.append(f"[{ui_category}] {name} (jwId: {jwid})")
 
         # Wait a bit for all UI updates to complete before checking for unchecked items
         print("Waiting for UI to update checkbox states...")
@@ -258,9 +260,10 @@ def input_publications(driver, publication_data, language):
 
                         # Check if this publication matches the label
                         is_match = False
-                        if pub_name_norm.startswith("others "):
-                            # Special handling for "Others - Category" publications
-                            if label_norm.strip() == "others":
+                        if pub_name_norm == "others" or pub_name_norm.startswith("others "):
+                            # Special handling for "Others" publications
+                            # Skip jwId check - just match on "others" text
+                            if label_norm == "others":
                                 is_match = True
                         else:
                             # Normal AND logic for all other publications
@@ -298,13 +301,15 @@ def input_publications(driver, publication_data, language):
                             jwid = matched_pub.get("jwId")
                             qty = matched_pub.get("quantity")
                             
-                            # Special handling for "Others - Category" publications in retry
-                            if normalized_name.startswith("others "):
+                            # Special handling for "Others" publications in retry
+                            # Skip jwId check since it doesn't exist in DOM for "Others" publications
+                            if normalized_name == "others" or normalized_name.startswith("others "):
                                 for btn in buttons:
                                     btn_text = normalize_text(btn.text)
-                                    if btn_text.strip() == "others":
+                                    # Match if button text is exactly "others" (jwId is not checked)
+                                    if btn_text == "others":
                                         btn.click()
-                                        print(f"  [RETRY] Clicked: {matched_pub.get('name')} (jwId: {jwid}) [OTHERS SPECIAL CASE]")
+                                        print(f"  [RETRY] Clicked: {matched_pub.get('name')} (jwId: {jwid}) [OTHERS SPECIAL CASE - jwId not verified in DOM]")
                                         found = True
                                         break
                             else:
