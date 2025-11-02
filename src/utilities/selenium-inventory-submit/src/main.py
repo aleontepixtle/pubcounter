@@ -20,8 +20,12 @@ JW_TOTP_SECRET = os.getenv("JW_TOTP_SECRET")
 def setup_driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--window-size=1920,1080")
-    # Uncomment the next line for headless mode, or leave commented for visible browser
-    # options.add_argument("--headless=new")
+
+    # Enable headless mode for Docker/server environments
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
 
     from selenium.webdriver.chrome.service import Service
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
@@ -259,27 +263,36 @@ def main():
     print(f"##################################################\n")
     code_to_name, name_to_code = load_languages()
 
-    while True:
-        # Use CLI flag or prompt
-        parser = argparse.ArgumentParser(description="JW Inventory Automation")
-        parser.add_argument("--language", "-l", help="Language code or full name (e.g., en, English)")
-        args, unknown = parser.parse_known_args()
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="JW Inventory Automation")
+    parser.add_argument("--language", "-l", help="Language code or full name (e.g., en, English)")
+    parser.add_argument("--non-interactive", "-n", action="store_true",
+                        help="Run in non-interactive mode (no prompts, auto-proceed)")
+    args, unknown = parser.parse_known_args()
 
-        lang_code, lang_name = resolve_language(args.language, code_to_name, name_to_code)
+    while True:
+        # Priority: 1. CLI arg, 2. Environment variable, 3. Interactive prompt
+        language_input = args.language or os.getenv("LANGUAGE")
+
+        lang_code, lang_name = resolve_language(language_input, code_to_name, name_to_code)
         if not lang_code:
+            if args.non_interactive:
+                print("ERROR: No language specified. Use --language or set LANGUAGE environment variable.")
+                break
             lang_code, lang_name = select_language_interactively(code_to_name)
 
         print(f"###################################################################################")
         print(f"Selected language: {lang_name} ({lang_code})")
         print(f"###################################################################################")
 
-        # Prompt user to continue, return to language selection, or quit
-        user_input = input("Press Enter to continue, 'l' to select language, or 'q' to quit: ").strip().lower()
-        if user_input == 'q':
-            print("Quitting script.")
-            break
-        if user_input == 'l':
-            continue  # Restart language selection
+        # Skip confirmation prompt in non-interactive mode
+        if not args.non_interactive:
+            user_input = input("Press Enter to continue, 'l' to select language, or 'q' to quit: ").strip().lower()
+            if user_input == 'q':
+                print("Quitting script.")
+                break
+            if user_input == 'l':
+                continue  # Restart language selection
 
         driver = setup_driver()
         try:
@@ -316,6 +329,12 @@ def main():
             print("\n[INFO] Script interrupted by user. Exiting gracefully.")
         finally:
             driver.quit()
+
+        # In non-interactive mode, exit after completing the task
+        if args.non_interactive:
+            print("Completed successfully. Exiting.")
+            break
+
         # After finishing, ask if the user wants to select another language or quit
         post_input = input("\nPress Enter to quit, or 'l' to select another language: ").strip().lower()
         if post_input == 'l':
