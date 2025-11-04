@@ -1,0 +1,65 @@
+# Environment variables (NEVER commit these!)
+.env
+.env.local
+.env.production
+*.env
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+instance/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+*.pid
+
+# Redis
+dump.rdb
+
+# Docker
+docker-compose.override.yml
+
+# Temporary files created during job execution
+temp_envs/
+*.tmp
+
+# Node modules (if you add any frontend build tools later)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Secrets and keys
+*.pem
+*.key
+*.crt
+secrets/

@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Inventory - Inventory Portal{% endblock %}
+
+{% block extra_css %}
+<style>
+    .progress-container {
+        display: none;
+        margin-top: 2rem;
+    }
+    .progress-container.active {
+        display: block;
+    }
+    .publication-animation {
+        animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">
+    <i class="bi bi-send"></i> Submit Inventory
+</h1>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Choose Submission Method</h5>
+            </div>
+            <div class="card-body">
+                <!-- Choose between saved or manual -->
+                <div class="btn-group w-100 mb-4" role="group">
+                    {% if has_saved_creds %}
+                    <input type="radio" class="btn-check" name="submission-type" id="use-saved" checked>
+                    <label class="btn btn-outline-primary" for="use-saved">
+                        <i class="bi bi-save"></i> Use Saved Credentials
+                    </label>
+                    {% endif %}
+                    
+                    <input type="radio" class="btn-check" name="submission-type" id="use-manual" 
+                           {% if not has_saved_creds %}checked{% endif %}>
+                    <label class="btn btn-outline-primary" for="use-manual">
+                        <i class="bi bi-pencil"></i> Enter Manually
+                    </label>
+                </div>
+                
+                <!-- Saved Credentials Option -->
+                {% if has_saved_creds %}
+                <div id="saved-creds-section" class="submission-section">
+                    <div class="alert alert-success">
+                        <i class="bi bi-check-circle"></i>
+                        You have saved credentials. Click submit to use them.
+                    </div>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="submitWithSaved()">
+                        <i class="bi bi-send"></i> Submit with Saved Credentials
+                    </button>
+                </div>
+                {% endif %}
+                
+                <!-- Manual Entry Option -->
+                <div id="manual-creds-section" class="submission-section" 
+                     style="{% if has_saved_creds %}display: none;{% endif %}">
+                    <form id="manual-submit-form">
+                        {{ manual_form.hidden_tag() }}
+                        
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle"></i>
+                            <strong>Note:</strong> Credentials entered here are not saved and will be used only for this submission.
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ manual_form.jw_username.label(class="form-label") }}
+                            {{ manual_form.jw_username(class="form-control", placeholder="Your JW.org username") }}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ manual_form.jw_password.label(class="form-label") }}
+                            {{ manual_form.jw_password(class="form-control", placeholder="Your JW.org password") }}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ manual_form.jw_totp_secret.label(class="form-label") }}
+                            {{ manual_form.jw_totp_secret(class="form-control", placeholder="Your TOTP secret key") }}
+                            <div class="form-text">
+                                This is the secret key used for 2FA authentication
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ manual_form.language.label(class="form-label") }}
+                            {{ manual_form.language(class="form-select") }}
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-send"></i> Submit Inventory
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Progress Card -->
+        <div class="card progress-container" id="progress-container">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-hourglass-split"></i> Job Progress
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span id="current-step">Initializing...</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress" style="height: 30px;">
+                        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" 
+                             role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div id="last-publication" class="alert alert-info publication-animation" style="display: none;">
+                    <strong>Last Publication:</strong> <span id="publication-name"></span>
+                </div>
+                
+                <div id="completion-message" style="display: none;">
+                    <div class="alert alert-success">
+                        <i class="bi bi-check-circle"></i>
+                        <strong>Success!</strong> Your inventory has been submitted successfully.
+                    </div>
+                    <a href="{{ url_for('main.dashboard') }}" class="btn btn-primary">
+                        <i class="bi bi-speedometer2"></i> Back to Dashboard
+                    </a>
+                </div>
+                
+                <div id="error-message" style="display: none;">
+                    <div class="alert alert-danger">
+                        <i class="bi bi-x-circle"></i>
+                        <strong>Error:</strong> <span id="error-text"></span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="location.reload()">
+                        <i class="bi bi-arrow-clockwise"></i> Try Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Info Sidebar -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-info-circle"></i> Information
+                </h5>
+            </div>
+            <div class="card-body">
+                <h6>How it works:</h6>
+                <ol>
+                    <li>Choose to use saved credentials or enter them manually</li>
+                    <li>Submit the form to start the automation</li>
+                    <li>Watch real-time progress as your inventory is submitted</li>
+                    <li>Receive a Discord notification when complete</li>
+                </ol>
+                
+                <hr>
+                
+                <h6>Security:</h6>
+                <p class="small text-muted">
+                    All credentials are encrypted in transit and at rest. Manual credentials are never stored.
+                </p>
+                
+                <hr>
+                
+                <h6>Need Help?</h6>
+                <p class="small">
+                    <a href="{{ url_for('main.credentials') }}">Set up saved credentials</a>
+                    to make submissions faster next time.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Toggle between saved and manual
+document.querySelectorAll('input[name="submission-type"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        if (this.id === 'use-saved') {
+            document.getElementById('saved-creds-section').style.display = 'block';
+            document.getElementById('manual-creds-section').style.display = 'none';
+        } else {
+            document.getElementById('saved-creds-section').style.display = 'none';
+            document.getElementById('manual-creds-section').style.display = 'block';
+        }
+    });
+});
+
+// Initialize Socket.IO
+const socket = io();
+let currentJobId = null;
+
+socket.on('connect', function() {
+    console.log('Connected to server');
+});
+
+socket.on('job_progress', function(data) {
+    if (data.job_id === currentJobId) {
+        updateProgress(data.progress, data.current_step, data.last_publication);
+    }
+});
+
+function updateProgress(progress, step, publication) {
+    document.getElementById('progress-bar').style.width = progress + '%';
+    document.getElementById('progress-percent').textContent = progress + '%';
+    document.getElementById('current-step').textContent = step;
+    
+    if (publication) {
+        document.getElementById('publication-name').textContent = publication;
+        document.getElementById('last-publication').style.display = 'block';
+    }
+    
+    if (progress >= 100) {
+        document.getElementById('completion-message').style.display = 'block';
+        document.getElementById('progress-bar').classList.remove('progress-bar-animated');
+    }
+}
+
+function showProgress() {
+    document.getElementById('progress-container').classList.add('active');
+    document.querySelector('.card:not(.progress-container)').style.opacity = '0.5';
+}
+
+function submitWithSaved() {
+    if (!confirm('Submit inventory using saved credentials?')) return;
+    
+    showProgress();
+    
+    fetch('/jobs/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({ use_saved: true })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            currentJobId = data.job_id;
+            socket.emit('join_job', { job_id: currentJobId });
+            pollJobStatus(currentJobId);
+        } else {
+            showError(data.error || 'Failed to submit job');
+        }
+    })
+    .catch(error => {
+        showError('Network error: ' + error.message);
+    });
+}
+
+document.getElementById('manual-submit-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = {
+        use_saved: false,
+        jw_username: formData.get('jw_username'),
+        jw_password: formData.get('jw_password'),
+        jw_totp_secret: formData.get('jw_totp_secret'),
+        language: formData.get('language')
+    };
+    
+    showProgress();
+    
+    fetch('/jobs/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': formData.get('csrf_token')
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            currentJobId = data.job_id;
+            socket.emit('join_job', { job_id: currentJobId });
+            pollJobStatus(currentJobId);
+        } else {
+            showError(data.error || 'Failed to submit job');
+        }
+    })
+    .catch(error => {
+        showError('Network error: ' + error.message);
+    });
+});
+
+function pollJobStatus(jobId) {
+    const interval = setInterval(() => {
+        fetch(`/jobs/${jobId}/status`)
+            .then(response => response.json())
+            .then(data => {
+                updateProgress(data.progress, data.current_step, data.last_publication);
+                
+                if (data.status === 'completed' || data.status === 'failed') {
+                    clearInterval(interval);
+                    if (data.status === 'failed') {
+                        showError(data.error_message || 'Job failed');
+                    }
+                }
+            });
+    }, 2000);
+}
+
+function showError(message) {
+    document.getElementById('error-text').textContent = message;
+    document.getElementById('error-message').style.display = 'block';
+    document.getElementById('progress-container').classList.add('active');
+}
+</script>
+{% endblock %}

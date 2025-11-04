@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 import time
 import pyotp
+import uuid
 from webdriver_manager.chrome import ChromeDriverManager
 from publication_input import load_publication_data, input_publications
 from utils import handle_privacy_banner
@@ -26,6 +27,13 @@ def setup_driver():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
+
+    # Use a UUID-based unique user data directory to avoid conflicts in concurrent Docker runs
+    import tempfile
+    unique_id = str(uuid.uuid4())
+    user_data_dir = os.path.join(tempfile.gettempdir(), f"chrome_profile_{unique_id}")
+    os.makedirs(user_data_dir, exist_ok=True)
+    options.add_argument(f"--user-data-dir={user_data_dir}")
 
     from selenium.webdriver.chrome.service import Service
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
