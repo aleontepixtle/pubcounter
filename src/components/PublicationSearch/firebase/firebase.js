@@ -1,38 +1,29 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase, set, ref, get, child } from "firebase/database";
+// Firebase connection has been severed - this site is deprecated
+// All exports are stubs that prevent any Firebase requests
 
-// Validate Firebase configuration
-const requiredEnvVars = {
-  REACT_APP_FIREBASE_API_KEY: process.env.REACT_APP_FIREBASE_API_KEY,
-  REACT_APP_FIREBASE_AUTH_DOMAIN: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  REACT_APP_FIREBASE_PROJECT_ID: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  REACT_APP_FIREBASE_DATABASE_URL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+console.warn(
+  "Firebase connection disabled: This application is deprecated and no longer connects to Firebase."
+);
+
+// Stub database object
+const database = null;
+
+// Stub ref function - returns a mock reference
+const ref = () => ({});
+
+// Stub get function - returns a snapshot with no data
+const get = async () => ({
+  exists: () => false,
+  val: () => null,
+});
+
+// Stub set function - logs warning and rejects
+const set = async () => {
+  console.warn("Firebase write operations are disabled - this site is deprecated.");
+  return Promise.reject(new Error("Firebase connection disabled - site is deprecated"));
 };
 
-// Check for missing required environment variables
-const missingVars = Object.entries(requiredEnvVars)
-  .filter(([_, value]) => !value)
-  .map(([key]) => key);
-
-if (missingVars.length > 0) {
-  throw new Error(
-    `Missing required Firebase configuration variables: ${missingVars.join(', ')}`
-  );
-}
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: requiredEnvVars.REACT_APP_FIREBASE_API_KEY,
-  authDomain: requiredEnvVars.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: requiredEnvVars.REACT_APP_FIREBASE_PROJECT_ID,
-  databaseURL: requiredEnvVars.REACT_APP_FIREBASE_DATABASE_URL,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_APP_MEASUREMENT_ID,
-};
-
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+// Stub child function - returns empty object
+const child = () => ({});
 
 export { database, set, ref, get, child };
