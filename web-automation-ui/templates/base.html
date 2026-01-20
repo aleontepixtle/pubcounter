@@ -15,6 +15,48 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
+    <!-- Deprecation Banner -->
+    <div class="deprecation-banner bg-danger text-white text-center py-2" style="font-weight: 500;">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        Notice: This application will be deprecated on February 10th, 2026. Please migrate to the new version at Pubcounter.io
+        <i class="bi bi-exclamation-triangle-fill ms-2"></i>
+    </div>
+
+    <!-- Deprecation Modal -->
+    <div class="modal fade" id="deprecationModal" tabindex="-1" aria-labelledby="deprecationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="deprecationModalLabel">
+                        <i class="bi bi-info-circle me-2"></i>Important Notice
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-3">
+                        <strong>Thank you for using the Pubcounter Inventory Helper Version 0!</strong>
+                    </p>
+                    <p class="mb-3">
+                        We have made major improvements based on your valuable feedback, and a new and much improved version is now available for beta testing!
+                    </p>
+                    <p class="mb-3">
+                        To learn more and get started with the new version, please contact <strong>Andrew Leon</strong> or visit <a href="https://pubcounter.io" target="_blank" class="fw-bold">Pubcounter.io</a>.
+                    </p>
+                    <div class="alert alert-warning mb-0">
+                        <i class="bi bi-calendar-event me-2"></i>
+                        <strong>Pubcounter V0's last day is February 10th, 2026.</strong><br>
+                        Please make plans to migrate and register for the new version before this date.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="bi bi-check-lg me-1"></i>Got it, thanks!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -109,5 +151,13 @@
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     
     {% block extra_js %}{% endblock %}
+
+    <!-- Deprecation Modal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var deprecationModal = new bootstrap.Modal(document.getElementById('deprecationModal'));
+            deprecationModal.show();
+        });
+    </script>
 </body>
 </html>
